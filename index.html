@@ -1,0 +1,1241 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Le Mazet des Vaines – Location en Luberon, Goult</title>
+    <meta name="description" content="Bergerie du XIXe siècle à louer au cœur du Luberon, Goult. 3 chambres, 8 voyageurs, piscine privée, vue sur les vignes. À partir de 280€/nuit.">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+
+    <style>
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+        :root {
+            --gold:  #B8965A;
+            --terra: #A8552A;
+            --cream: #FDFAF5;
+            --dark:  #1C1A17;
+            --mid:   #5A544A;
+            --stone: #C9C2B4;
+            --light: #F0EAE0;
+        }
+
+        html { scroll-behavior: smooth; }
+
+        body {
+            font-family: 'Lato', sans-serif;
+            background: var(--cream);
+            color: var(--dark);
+            font-weight: 300;
+            line-height: 1.7;
+        }
+
+        /* ── NAVIGATION ─────────────────────────────── */
+        nav {
+            position: fixed;
+            top: 0; left: 0; right: 0;
+            z-index: 100;
+            padding: 24px 48px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: all 0.35s ease;
+        }
+
+        nav.scrolled {
+            background: rgba(28, 26, 23, 0.96);
+            padding: 14px 48px;
+            backdrop-filter: blur(12px);
+        }
+
+        .nav-logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.2rem;
+            color: white;
+            text-decoration: none;
+            letter-spacing: 0.5px;
+            flex-shrink: 0;
+        }
+
+        .nav-right {
+            display: flex;
+            align-items: center;
+            gap: 32px;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 28px;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: rgba(255,255,255,0.82);
+            text-decoration: none;
+            font-size: 0.78rem;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            transition: color 0.2s;
+        }
+
+        .nav-links a:hover { color: var(--gold); }
+
+        .nav-cta {
+            padding: 10px 22px;
+            background: var(--gold);
+            color: white !important;
+            text-decoration: none;
+            font-size: 0.78rem;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            transition: background 0.2s !important;
+        }
+
+        .nav-cta:hover { background: var(--terra) !important; }
+
+        /* Language toggle */
+        .lang-toggle {
+            display: flex;
+            align-items: center;
+            gap: 2px;
+            border: 1px solid rgba(255,255,255,0.25);
+            padding: 4px;
+        }
+
+        .lang-btn {
+            background: none;
+            border: none;
+            color: rgba(255,255,255,0.45);
+            font-family: 'Lato', sans-serif;
+            font-size: 0.72rem;
+            font-weight: 700;
+            letter-spacing: 1.5px;
+            cursor: pointer;
+            padding: 4px 8px;
+            transition: all 0.2s;
+        }
+
+        .lang-btn.active {
+            background: var(--gold);
+            color: white;
+        }
+
+        .lang-btn:hover:not(.active) { color: white; }
+
+        /* ── HERO ────────────────────────────────────── */
+        .hero {
+            height: 100vh;
+            min-height: 600px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center center;
+        }
+
+        .hero-overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(160deg, rgba(0,0,0,0.25) 0%, rgba(0,0,0,0.5) 100%);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 40px 24px;
+        }
+
+        .hero-tag {
+            font-size: 0.72rem;
+            letter-spacing: 4px;
+            text-transform: uppercase;
+            color: var(--gold);
+            margin-bottom: 18px;
+        }
+
+        .hero h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(2.8rem, 7vw, 5.5rem);
+            color: white;
+            line-height: 1.05;
+            margin-bottom: 20px;
+        }
+
+        .hero h1 em { font-style: italic; color: #E8D5B5; }
+
+        .hero-sub {
+            color: rgba(255,255,255,0.82);
+            font-size: clamp(0.95rem, 1.5vw, 1.1rem);
+            max-width: 520px;
+            margin-bottom: 40px;
+            line-height: 1.8;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 15px 38px;
+            background: var(--gold);
+            color: white;
+            text-decoration: none;
+            font-size: 0.78rem;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            transition: background 0.2s;
+            cursor: pointer;
+            border: none;
+            font-family: 'Lato', sans-serif;
+        }
+
+        .btn:hover { background: var(--terra); }
+
+        .btn-outline {
+            background: transparent;
+            border: 1px solid rgba(255,255,255,0.6);
+            margin-left: 14px;
+        }
+
+        .btn-outline:hover { background: rgba(255,255,255,0.1); }
+
+        .hero-scroll {
+            position: absolute;
+            bottom: 32px;
+            left: 50%;
+            transform: translateX(-50%);
+            color: rgba(255,255,255,0.6);
+            font-size: 0.65rem;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 10px;
+            animation: bob 2.4s ease-in-out infinite;
+        }
+
+        .hero-scroll::after {
+            content: '';
+            display: block;
+            width: 1px;
+            height: 44px;
+            background: rgba(255,255,255,0.5);
+        }
+
+        @keyframes bob {
+            0%, 100% { transform: translateX(-50%) translateY(0); }
+            50%       { transform: translateX(-50%) translateY(7px); }
+        }
+
+        /* ── STATS BAR ───────────────────────────────── */
+        .stats-bar {
+            background: var(--dark);
+            padding: 28px 40px;
+            display: flex;
+            justify-content: center;
+            gap: 64px;
+            flex-wrap: wrap;
+        }
+
+        .stat { text-align: center; }
+
+        .stat-number {
+            font-family: 'Playfair Display', serif;
+            font-size: 2rem;
+            color: var(--gold);
+            display: block;
+            line-height: 1;
+        }
+
+        .stat-label {
+            font-size: 0.7rem;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: rgba(255,255,255,0.5);
+            margin-top: 4px;
+            display: block;
+        }
+
+        /* ── SECTIONS ────────────────────────────────── */
+        section { padding: 96px 48px; }
+
+        .section-tag {
+            display: block;
+            font-size: 0.7rem;
+            letter-spacing: 4px;
+            text-transform: uppercase;
+            color: var(--gold);
+            margin-bottom: 14px;
+        }
+
+        .section-title {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(1.9rem, 3.5vw, 2.9rem);
+            line-height: 1.15;
+            margin-bottom: 26px;
+        }
+
+        .section-text { color: var(--mid); max-width: 600px; line-height: 1.95; }
+
+        /* ── ABOUT ───────────────────────────────────── */
+        .about-inner {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 80px;
+            align-items: center;
+        }
+
+        .about-images { position: relative; height: 520px; }
+
+        .about-images .img-main {
+            position: absolute;
+            top: 0; left: 0;
+            width: 85%; height: 88%;
+            object-fit: cover;
+        }
+
+        .about-images .img-accent {
+            position: absolute;
+            bottom: 0; right: 0;
+            width: 56%; height: 48%;
+            object-fit: cover;
+            border: 6px solid var(--cream);
+            box-shadow: 0 8px 32px rgba(0,0,0,0.15);
+        }
+
+        .about-text p + p { margin-top: 18px; }
+
+        /* ── GALLERY ─────────────────────────────────── */
+        #galerie { background: var(--light); padding-bottom: 0; }
+
+        .gallery-header { max-width: 1200px; margin: 0 auto 40px; text-align: center; }
+
+        .gallery-grid {
+            max-width: 100%;
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            grid-auto-rows: 230px;
+            gap: 6px;
+        }
+
+        .gallery-item { overflow: hidden; cursor: pointer; position: relative; }
+
+        .gallery-item::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: rgba(0,0,0,0);
+            transition: background 0.3s;
+        }
+
+        .gallery-item:hover::after { background: rgba(0,0,0,0.12); }
+
+        .gallery-item:nth-child(1) { grid-column: span 2; grid-row: span 2; }
+        .gallery-item:nth-child(6) { grid-column: span 2; }
+        .gallery-item:nth-child(9) { grid-column: span 2; grid-row: span 2; }
+
+        .gallery-item img {
+            width: 100%; height: 100%;
+            object-fit: cover;
+            transition: transform 0.6s ease;
+            display: block;
+        }
+
+        .gallery-item:hover img { transform: scale(1.04); }
+
+        /* ── AMENITIES ───────────────────────────────── */
+        .amenities-inner { max-width: 1200px; margin: 0 auto; }
+
+        .amenities-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+            gap: 28px;
+            margin-top: 50px;
+        }
+
+        .amenity { display: flex; align-items: flex-start; gap: 16px; padding: 22px; background: var(--light); }
+
+        .amenity-icon { font-size: 1.6rem; flex-shrink: 0; margin-top: 2px; }
+        .amenity-name { font-weight: 400; font-size: 0.92rem; color: var(--dark); }
+        .amenity-desc { font-size: 0.8rem; color: var(--mid); margin-top: 3px; line-height: 1.5; }
+
+        /* ── PRICING ─────────────────────────────────── */
+        #tarifs { background: var(--dark); }
+        #tarifs .section-tag { color: var(--gold); }
+        #tarifs .section-title { color: white; }
+
+        .pricing-header { max-width: 1200px; margin: 0 auto 56px; text-align: center; }
+        .pricing-sub { color: rgba(255,255,255,0.45); font-size: 0.88rem; margin-top: 10px; }
+
+        .pricing-grid {
+            max-width: 880px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2px;
+            background: rgba(255,255,255,0.08);
+        }
+
+        .pricing-card { background: #252320; padding: 44px 32px; text-align: center; }
+        .pricing-card.featured { background: var(--gold); }
+
+        .pricing-season {
+            display: block;
+            font-size: 0.7rem;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            color: var(--gold);
+            margin-bottom: 8px;
+        }
+
+        .pricing-card.featured .pricing-season { color: rgba(255,255,255,0.75); }
+
+        .pricing-months {
+            font-size: 0.8rem;
+            color: rgba(255,255,255,0.4);
+            margin-bottom: 36px;
+            min-height: 38px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .pricing-card.featured .pricing-months { color: rgba(255,255,255,0.8); }
+
+        .price-wrap { line-height: 1; }
+
+        .price-currency {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.4rem;
+            color: white;
+            vertical-align: top;
+            margin-top: 8px;
+            display: inline-block;
+        }
+
+        .price-amount {
+            font-family: 'Playfair Display', serif;
+            font-size: 3.4rem;
+            color: white;
+            line-height: 1;
+        }
+
+        .price-period { display: block; font-size: 0.75rem; color: rgba(255,255,255,0.45); margin-top: 8px; }
+        .pricing-card.featured .price-period { color: rgba(255,255,255,0.75); }
+
+        .price-note {
+            margin-top: 28px;
+            font-size: 0.8rem;
+            color: rgba(255,255,255,0.4);
+            padding-top: 20px;
+            border-top: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .pricing-card.featured .price-note { color: rgba(255,255,255,0.75); border-color: rgba(255,255,255,0.25); }
+
+        /* ── LOCATION ────────────────────────────────── */
+        .location-inner {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 64px;
+            align-items: start;
+        }
+
+        .distances { list-style: none; margin-top: 32px; }
+
+        .distances li {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 13px 0;
+            border-bottom: 1px solid var(--stone);
+            font-size: 0.88rem;
+        }
+
+        .dist-place { color: var(--dark); }
+        .dist-time { color: var(--gold); font-weight: 700; font-size: 0.78rem; letter-spacing: 1px; }
+
+        .map-wrap { position: sticky; top: 100px; }
+
+        .map-embed { width: 100%; height: 420px; border: 0; display: block; }
+
+        /* ── RULES ───────────────────────────────────── */
+        #reglement { padding-top: 0; }
+        .rules-inner { max-width: 1200px; margin: 0 auto; }
+
+        .rules-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(190px, 1fr));
+            gap: 16px;
+            margin-top: 40px;
+        }
+
+        .rule { background: var(--light); padding: 22px 20px; }
+        .rule-icon { font-size: 1.5rem; margin-bottom: 10px; display: block; }
+        .rule-label { font-size: 0.68rem; letter-spacing: 2px; text-transform: uppercase; color: var(--stone); margin-bottom: 5px; }
+        .rule-value { font-size: 0.88rem; color: var(--dark); font-weight: 400; }
+
+        /* ── CONTACT ─────────────────────────────────── */
+        #contact { background: var(--light); }
+
+        .contact-inner {
+            max-width: 1100px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1.2fr;
+            gap: 72px;
+            align-items: start;
+        }
+
+        .contact-text p { color: var(--mid); line-height: 1.9; font-size: 0.95rem; }
+        .contact-details { margin-top: 32px; display: flex; flex-direction: column; gap: 14px; }
+
+        .contact-detail {
+            display: flex;
+            align-items: center;
+            gap: 13px;
+            font-size: 0.88rem;
+            color: var(--mid);
+        }
+
+        .contact-detail a { color: var(--gold); text-decoration: none; }
+        .contact-detail a:hover { text-decoration: underline; }
+        .contact-detail-icon { font-size: 1.1rem; }
+
+        .airbnb-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            margin-top: 28px;
+            padding: 12px 24px;
+            border: 1px solid var(--stone);
+            color: var(--mid);
+            text-decoration: none;
+            font-size: 0.82rem;
+            letter-spacing: 1px;
+            transition: border-color 0.2s, color 0.2s;
+        }
+
+        .airbnb-link:hover { border-color: var(--gold); color: var(--gold); }
+
+        .contact-form { background: white; padding: 40px; }
+
+        .form-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.3rem;
+            margin-bottom: 28px;
+            color: var(--dark);
+        }
+
+        .form-grid { display: flex; flex-direction: column; gap: 14px; }
+        .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+        .form-group { display: flex; flex-direction: column; gap: 5px; }
+
+        label { font-size: 0.72rem; letter-spacing: 1.5px; text-transform: uppercase; color: var(--mid); }
+
+        input, textarea, select {
+            width: 100%;
+            padding: 12px 14px;
+            border: 1px solid #DDD5C8;
+            background: var(--cream);
+            font-family: 'Lato', sans-serif;
+            font-size: 0.9rem;
+            color: var(--dark);
+            outline: none;
+            transition: border-color 0.2s;
+            appearance: none;
+        }
+
+        input:focus, textarea:focus, select:focus { border-color: var(--gold); background: white; }
+        textarea { height: 110px; resize: vertical; }
+
+        .btn-submit {
+            width: 100%;
+            padding: 15px;
+            background: var(--gold);
+            color: white;
+            border: none;
+            font-family: 'Lato', sans-serif;
+            font-size: 0.8rem;
+            letter-spacing: 2.5px;
+            text-transform: uppercase;
+            cursor: pointer;
+            transition: background 0.2s;
+            margin-top: 6px;
+        }
+
+        .btn-submit:hover { background: var(--terra); }
+
+        /* ── FOOTER ──────────────────────────────────── */
+        footer { background: var(--dark); padding: 48px; text-align: center; }
+
+        .footer-logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.5rem;
+            color: white;
+            display: block;
+            margin-bottom: 8px;
+        }
+
+        .footer-tagline {
+            font-size: 0.78rem;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: rgba(255,255,255,0.35);
+            margin-bottom: 28px;
+        }
+
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 28px;
+            list-style: none;
+            margin-bottom: 28px;
+            flex-wrap: wrap;
+        }
+
+        .footer-links a {
+            color: rgba(255,255,255,0.45);
+            text-decoration: none;
+            font-size: 0.78rem;
+            letter-spacing: 1px;
+            transition: color 0.2s;
+        }
+
+        .footer-links a:hover { color: var(--gold); }
+        .footer-copy { font-size: 0.72rem; color: rgba(255,255,255,0.25); }
+        .footer-copy a { color: var(--gold); text-decoration: none; }
+
+        /* ── LIGHTBOX ────────────────────────────────── */
+        .lightbox {
+            display: none;
+            position: fixed;
+            inset: 0;
+            background: rgba(0,0,0,0.96);
+            z-index: 1000;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .lightbox.active { display: flex; }
+
+        .lightbox-img-wrap { max-width: 90vw; max-height: 90vh; position: relative; }
+
+        .lightbox img { max-width: 90vw; max-height: 88vh; object-fit: contain; display: block; }
+
+        .lb-btn {
+            position: absolute;
+            background: none;
+            border: none;
+            color: white;
+            cursor: pointer;
+            font-size: 2.2rem;
+            padding: 16px 24px;
+            line-height: 1;
+            transition: color 0.2s;
+        }
+
+        .lb-btn:hover { color: var(--gold); }
+        .lb-close { top: 16px; right: 16px; font-size: 1.8rem; }
+        .lb-prev  { top: 50%; left: -60px; transform: translateY(-50%); }
+        .lb-next  { top: 50%; right: -60px; transform: translateY(-50%); }
+
+        .lb-counter {
+            position: absolute;
+            bottom: -28px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 0.75rem;
+            color: rgba(255,255,255,0.45);
+            letter-spacing: 1px;
+        }
+
+        /* ── RESPONSIVE ──────────────────────────────── */
+        @media (max-width: 960px) {
+            nav { padding: 16px 24px; }
+            nav.scrolled { padding: 12px 24px; }
+            .nav-links { display: none; }
+            section { padding: 64px 24px; }
+            .about-inner { grid-template-columns: 1fr; gap: 0; }
+            .about-images { height: 300px; margin-bottom: 40px; }
+            .gallery-grid { grid-template-columns: repeat(2, 1fr); grid-auto-rows: 180px; }
+            .gallery-item:nth-child(1) { grid-column: span 2; }
+            .gallery-item:nth-child(6) { grid-column: span 1; }
+            .gallery-item:nth-child(9) { grid-column: span 1; grid-row: span 1; }
+            .pricing-grid { grid-template-columns: 1fr; max-width: 340px; }
+            .location-inner { grid-template-columns: 1fr; gap: 40px; }
+            .map-wrap { position: static; }
+            .contact-inner { grid-template-columns: 1fr; gap: 40px; }
+            .form-row { grid-template-columns: 1fr; }
+            .stats-bar { gap: 32px; padding: 24px; }
+            .lb-prev { left: 4px; }
+            .lb-next { right: 4px; }
+        }
+
+        @media (max-width: 480px) {
+            .hero h1 { font-size: 2.4rem; }
+            .btn-outline { display: none; }
+            .gallery-grid { grid-template-columns: 1fr; }
+            .gallery-item:nth-child(1) { grid-column: span 1; }
+            .lang-toggle { display: none; }
+        }
+    </style>
+</head>
+
+<body>
+
+<!-- ══ NAVIGATION ════════════════════════════════════════════════ -->
+<nav id="navbar">
+    <a href="#" class="nav-logo">Le Mazet des Vaines</a>
+    <div class="nav-right">
+        <ul class="nav-links">
+            <li><a href="#logement"    data-i18n="nav.logement">Le logement</a></li>
+            <li><a href="#galerie"     data-i18n="nav.photos">Photos</a></li>
+            <li><a href="#equipements" data-i18n="nav.equipements">Équipements</a></li>
+            <li><a href="#tarifs"      data-i18n="nav.tarifs">Tarifs</a></li>
+            <li><a href="#localisation" data-i18n="nav.localisation">Localisation</a></li>
+            <li><a href="#contact" class="nav-cta" data-i18n="nav.reserver">Réserver</a></li>
+        </ul>
+        <div class="lang-toggle">
+            <button class="lang-btn active" onclick="setLang('fr')">FR</button>
+            <button class="lang-btn" onclick="setLang('en')">EN</button>
+        </div>
+    </div>
+</nav>
+
+<!-- ══ HERO ══════════════════════════════════════════════════════ -->
+<section class="hero" id="hero">
+    <img src="photos/hero-cropped.jpg" alt="Vue aérienne du Mazet des Vaines, Goult, Luberon">
+    <div class="hero-overlay">
+        <span class="hero-tag" data-i18n="hero.tag">Goult · Luberon · Provence</span>
+        <h1>Le Mazet<br>des <em>Vaines</em></h1>
+        <p class="hero-sub" data-i18n-html="hero.subtitle">Une bergerie du XIX<sup>e</sup> siècle au cœur des vignes,<br>entre ciel provençal et pierres dorées.</p>
+        <div>
+            <a href="#contact" class="btn"         data-i18n="hero.cta1">Demander une disponibilité</a>
+            <a href="#galerie" class="btn btn-outline" data-i18n="hero.cta2">Voir les photos</a>
+        </div>
+    </div>
+    <div class="hero-scroll" data-i18n="hero.scroll">Découvrir</div>
+</section>
+
+<!-- ══ STATS BAR ══════════════════════════════════════════════════ -->
+<div class="stats-bar">
+    <div class="stat">
+        <span class="stat-number">3</span>
+        <span class="stat-label" data-i18n="stat.chambres">Chambres</span>
+    </div>
+    <div class="stat">
+        <span class="stat-number">8</span>
+        <span class="stat-label" data-i18n="stat.voyageurs">Voyageurs max.</span>
+    </div>
+    <div class="stat">
+        <span class="stat-number">7,5×4m</span>
+        <span class="stat-label" data-i18n="stat.piscine">Piscine privée</span>
+    </div>
+    <div class="stat">
+        <span class="stat-number">180°</span>
+        <span class="stat-label" data-i18n="stat.vue">Vue vignes &amp; Ventoux</span>
+    </div>
+    <div class="stat">
+        <span class="stat-number">5'</span>
+        <span class="stat-label" data-i18n="stat.distance">De Goult &amp; Roussillon</span>
+    </div>
+</div>
+
+<!-- ══ ABOUT ══════════════════════════════════════════════════════ -->
+<section id="logement">
+    <div class="about-inner">
+        <div class="about-images">
+            <img class="img-main" src="photos/b17d5299-145f-41eb-bc6e-a5f20b286f02.JPG"
+                 alt="Terrasse couverte avec vue sur le Luberon et le Mont Ventoux">
+            <img class="img-accent" src="photos/DSC04360-HDR-Modifier.jpg"
+                 alt="Chambre en pierres apparentes">
+        </div>
+        <div class="about-text">
+            <span class="section-tag" data-i18n="about.tag">Le logement</span>
+            <h2 class="section-title" data-i18n-html="about.title">Une maison de caractère,<br><em>entièrement rénovée</em></h2>
+            <p class="section-text" data-i18n-html="about.p1">Bienvenue au <strong>Mazet des Vaines</strong> — notre maison familiale de charme nichée au cœur du Luberon, à Goult. Cette bergerie du XIX<sup>e</sup> siècle, mitoyenne et sans vis-à-vis, a été entièrement rénovée dans le respect des matériaux d'origine : pierres apparentes, poutres en bois, tomettes et sols en travertin.</p>
+            <p class="section-text" data-i18n-html="about.p2">Elle offre une <strong>vue imprenable sur les vignes</strong>, le village de Roussillon et le Mont Ventoux, une piscine privée en pierres naturelles, la climatisation et un jardin privatif ombragé.</p>
+            <p class="section-text" data-i18n="about.p3">Le cadre idéal pour un séjour paisible et ensoleillé en Provence, à quelques minutes des plus beaux villages du Luberon.</p>
+            <br>
+            <a href="#contact" class="btn" style="margin-top:8px" data-i18n="about.cta">Vérifier les disponibilités</a>
+        </div>
+    </div>
+</section>
+
+<!-- ══ GALLERY ════════════════════════════════════════════════════ -->
+<section id="galerie">
+    <div class="gallery-header">
+        <span class="section-tag" data-i18n="gallery.tag">Galerie</span>
+        <h2 class="section-title" data-i18n="gallery.title">Découvrez chaque espace</h2>
+        <p style="color:var(--mid);font-size:0.88rem;margin-top:-10px" data-i18n="gallery.hint">Cliquez sur une photo pour l'agrandir</p>
+    </div>
+    <div class="gallery-grid">
+        <div class="gallery-item" data-index="0"><img src="photos/DJI_0348-HDR-Modifier.jpg"                      alt="Vue aérienne"></div>
+        <div class="gallery-item" data-index="1"><img src="photos/b17d5299-145f-41eb-bc6e-a5f20b286f02.JPG"        alt="Terrasse couverte"></div>
+        <div class="gallery-item" data-index="2"><img src="photos/3ff4aa99-2428-4a5f-b2a9-02c4276b18e2.JPG"        alt="Jardin"></div>
+        <div class="gallery-item" data-index="3"><img src="photos/ef9a5e1c-5166-4df8-aee5-707742908b69.jpg"        alt="Salon"></div>
+        <div class="gallery-item" data-index="4"><img src="photos/68bafc7f-fb76-4960-ae7d-f5af8f00f8bf.jpg"        alt="Salon TV"></div>
+        <div class="gallery-item" data-index="5"><img src="photos/DSC04443-HDR-Modifier.jpg"                       alt="Salle à manger"></div>
+        <div class="gallery-item" data-index="6"><img src="photos/2892fe39-4893-44f9-a292-c0b8e9589869.jpg"        alt="Buffet en pierre"></div>
+        <div class="gallery-item" data-index="7"><img src="photos/DSC04360-HDR-Modifier.jpg"                       alt="Chambre en pierre"></div>
+        <div class="gallery-item" data-index="8"><img src="photos/26257826-1255-40a3-9cc1-f94cdcf0f3bc.JPG"        alt="Terrasse repas"></div>
+        <div class="gallery-item" data-index="9"><img src="photos/688c1fa5-0b0b-40a3-9750-6e0758ca899a.JPG"        alt="Jardin transats"></div>
+        <div class="gallery-item" data-index="10"><img src="photos/6d4197b3-de66-42b3-b778-765d5e4de2be.JPG"       alt="Jardin bistrot"></div>
+        <div class="gallery-item" data-index="11"><img src="photos/DSC04433-HDR-Modifier.jpg"                      alt="Cuisine"></div>
+    </div>
+</section>
+
+<!-- ══ AMENITIES ═════════════════════════════════════════════════ -->
+<section id="equipements">
+    <div class="amenities-inner">
+        <span class="section-tag" data-i18n="amenities.tag">Équipements</span>
+        <h2 class="section-title" data-i18n="amenities.title">Tout le confort pour votre séjour</h2>
+        <div class="amenities-grid">
+            <div class="amenity"><span class="amenity-icon">🏊</span><div><div class="amenity-name" data-i18n="amenity.pool.name">Piscine privée</div><div class="amenity-desc" data-i18n="amenity.pool.desc">7,5 × 4 m, entourée de chaises longues et de vignes</div></div></div>
+            <div class="amenity"><span class="amenity-icon">❄️</span><div><div class="amenity-name" data-i18n="amenity.ac.name">Climatisation</div><div class="amenity-desc" data-i18n="amenity.ac.desc">Dans les principales pièces de vie</div></div></div>
+            <div class="amenity"><span class="amenity-icon">📶</span><div><div class="amenity-name" data-i18n="amenity.wifi.name">WiFi haut débit</div><div class="amenity-desc" data-i18n="amenity.wifi.desc">Connexion rapide dans toute la maison</div></div></div>
+            <div class="amenity"><span class="amenity-icon">🍳</span><div><div class="amenity-name" data-i18n="amenity.kitchen.name">Cuisine équipée</div><div class="amenity-desc" data-i18n="amenity.kitchen.desc">Four, plaques, lave-vaisselle, frigo, Nespresso</div></div></div>
+            <div class="amenity"><span class="amenity-icon">🌿</span><div><div class="amenity-name" data-i18n="amenity.terrace.name">Terrasse ombragée</div><div class="amenity-desc" data-i18n="amenity.terrace.desc">Grande table à manger en extérieur</div></div></div>
+            <div class="amenity"><span class="amenity-icon">🔥</span><div><div class="amenity-name" data-i18n="amenity.bbq.name">Barbecue</div><div class="amenity-desc" data-i18n="amenity.bbq.desc">Disponible sur la terrasse privée</div></div></div>
+            <div class="amenity"><span class="amenity-icon">🚗</span><div><div class="amenity-name" data-i18n="amenity.parking.name">Parking gratuit</div><div class="amenity-desc" data-i18n="amenity.parking.desc">3 à 4 véhicules, sur la propriété</div></div></div>
+            <div class="amenity"><span class="amenity-icon">📺</span><div><div class="amenity-name" data-i18n="amenity.tv.name">Télévision</div><div class="amenity-desc" data-i18n="amenity.tv.desc">TV connectée dans le salon</div></div></div>
+            <div class="amenity"><span class="amenity-icon">🫧</span><div><div class="amenity-name" data-i18n="amenity.washer.name">Lave-linge</div><div class="amenity-desc" data-i18n="amenity.washer.desc">Machine disponible dans la cuisine</div></div></div>
+            <div class="amenity"><span class="amenity-icon">🛁</span><div><div class="amenity-name" data-i18n="amenity.bath.name">Baignoire</div><div class="amenity-desc" data-i18n="amenity.bath.desc">Salle de bain avec baignoire à l'étage</div></div></div>
+            <div class="amenity"><span class="amenity-icon">🐾</span><div><div class="amenity-name" data-i18n="amenity.pets.name">Animaux bienvenus</div><div class="amenity-desc" data-i18n="amenity.pets.desc">Sur demande préalable acceptée</div></div></div>
+            <div class="amenity"><span class="amenity-icon">🏡</span><div><div class="amenity-name" data-i18n="amenity.house.name">Logement entier</div><div class="amenity-desc" data-i18n="amenity.house.desc">Maison indépendante, sans vis-à-vis</div></div></div>
+        </div>
+    </div>
+</section>
+
+<!-- ══ PRICING ════════════════════════════════════════════════════ -->
+<section id="tarifs">
+    <div class="pricing-header">
+        <span class="section-tag" data-i18n="pricing.tag">Tarifs</span>
+        <h2 class="section-title" data-i18n="pricing.title">Nos formules de location</h2>
+        <p class="pricing-sub" data-i18n="pricing.sub">Frais de ménage : 200 € · Durée minimum : nous consulter</p>
+    </div>
+    <div class="pricing-grid">
+        <div class="pricing-card">
+            <span class="pricing-season" data-i18n="pricing.low.season">Basse saison</span>
+            <p class="pricing-months" data-i18n="pricing.low.months">Novembre – Mars</p>
+            <div class="price-wrap"><span class="price-currency">€</span><span class="price-amount">280</span></div>
+            <span class="price-period" data-i18n="pricing.night">par nuit</span>
+            <p class="price-note" data-i18n="pricing.cleaning">+ 200 € frais de ménage</p>
+        </div>
+        <div class="pricing-card featured">
+            <span class="pricing-season" data-i18n="pricing.mid.season">Moyenne saison</span>
+            <p class="pricing-months" data-i18n="pricing.mid.months">Avril – Juin &amp; Septembre – Octobre</p>
+            <div class="price-wrap"><span class="price-currency">€</span><span class="price-amount">380</span></div>
+            <span class="price-period" data-i18n="pricing.night">par nuit</span>
+            <p class="price-note" data-i18n="pricing.cleaning">+ 200 € frais de ménage</p>
+        </div>
+        <div class="pricing-card">
+            <span class="pricing-season" data-i18n="pricing.high.season">Haute saison</span>
+            <p class="pricing-months" data-i18n="pricing.high.months">Juillet – Août</p>
+            <div class="price-wrap"><span class="price-currency">€</span><span class="price-amount">460</span></div>
+            <span class="price-period" data-i18n="pricing.night">par nuit</span>
+            <p class="price-note" data-i18n="pricing.cleaning">+ 200 € frais de ménage</p>
+        </div>
+    </div>
+    <p style="text-align:center;margin-top:36px;color:rgba(255,255,255,0.35);font-size:0.82rem" data-i18n="pricing.note">
+        Tarifs indicatifs · Contactez-nous pour un devis personnalisé
+    </p>
+</section>
+
+<!-- ══ LOCATION ═══════════════════════════════════════════════════ -->
+<section id="localisation">
+    <div class="location-inner">
+        <div>
+            <span class="section-tag" data-i18n="location.tag">Localisation</span>
+            <h2 class="section-title" data-i18n="location.title">Au cœur du Luberon</h2>
+            <p class="section-text" data-i18n-html="location.text">Le Mazet des Vaines est situé à <strong>Goult</strong>, l'un des plus beaux villages perchés du Luberon. Entourée de vignes et d'oliviers, la maison offre un accès rapide à tous les sites emblématiques de la région.</p>
+            <ul class="distances">
+                <li><span class="dist-place" data-i18n="dist.goult">🏘 Centre de Goult</span><span class="dist-time">5 min</span></li>
+                <li><span class="dist-place" data-i18n="dist.roussillon">🟠 Roussillon (village ocre)</span><span class="dist-time">5 min</span></li>
+                <li><span class="dist-place" data-i18n="dist.gordes">🏰 Gordes</span><span class="dist-time">15 min</span></li>
+                <li><span class="dist-place" data-i18n="dist.bonnieux">🏘 Bonnieux</span><span class="dist-time">15 min</span></li>
+                <li><span class="dist-place" data-i18n="dist.menerbes">🏘 Ménerbes &amp; Lacoste</span><span class="dist-time">15 min</span></li>
+                <li><span class="dist-place" data-i18n="dist.marches">🛒 Marchés provençaux</span><span class="dist-time" data-i18n="dist.marches.time">Toute la semaine</span></li>
+                <li><span class="dist-place" data-i18n="dist.avignon">🚂 Gare d'Avignon TGV</span><span class="dist-time">45 min</span></li>
+                <li><span class="dist-place" data-i18n="dist.marseille">✈️ Aéroport de Marseille</span><span class="dist-time">1 h</span></li>
+            </ul>
+        </div>
+        <div class="map-wrap">
+            <iframe class="map-embed"
+                src="https://maps.google.com/maps?q=Goult,+Vaucluse,+France&output=embed&z=12"
+                allowfullscreen="" loading="lazy" title="Carte – Goult, Luberon">
+            </iframe>
+        </div>
+    </div>
+</section>
+
+<!-- ══ RULES ══════════════════════════════════════════════════════ -->
+<section id="reglement" style="padding-top:0">
+    <div class="rules-inner">
+        <span class="section-tag" data-i18n="rules.tag">Règlement</span>
+        <h2 class="section-title" data-i18n="rules.title">Règles du logement</h2>
+        <div class="rules-grid">
+            <div class="rule"><span class="rule-icon">🕓</span><div class="rule-label" data-i18n="rule.checkin.label">Arrivée</div><div class="rule-value" data-i18n="rule.checkin.value">À partir de 16h00</div></div>
+            <div class="rule"><span class="rule-icon">🕙</span><div class="rule-label" data-i18n="rule.checkout.label">Départ</div><div class="rule-value" data-i18n="rule.checkout.value">Avant 10h00</div></div>
+            <div class="rule"><span class="rule-icon">👥</span><div class="rule-label" data-i18n="rule.capacity.label">Capacité</div><div class="rule-value" data-i18n="rule.capacity.value">8 voyageurs maximum</div></div>
+            <div class="rule"><span class="rule-icon">🐾</span><div class="rule-label" data-i18n="rule.pets.label">Animaux</div><div class="rule-value" data-i18n="rule.pets.value">Acceptés sur demande</div></div>
+            <div class="rule"><span class="rule-icon">🚭</span><div class="rule-label" data-i18n="rule.smoking.label">Tabac</div><div class="rule-value" data-i18n="rule.smoking.value">Non-fumeur (intérieur)</div></div>
+        </div>
+    </div>
+</section>
+
+<!-- ══ CONTACT ════════════════════════════════════════════════════ -->
+<section id="contact">
+    <div class="contact-inner">
+        <div class="contact-text">
+            <span class="section-tag" data-i18n="contact.tag">Contact</span>
+            <h2 class="section-title" data-i18n="contact.title">Réservez votre séjour en Provence</h2>
+            <p data-i18n="contact.text">Pour vérifier les disponibilités ou poser vos questions, contactez-nous directement. Nous répondons dans les 24 heures.</p>
+            <div class="contact-details">
+                <div class="contact-detail">
+                    <span class="contact-detail-icon">✉️</span>
+                    <a href="mailto:lemazetdesvaines@gmail.com">lemazetdesvaines@gmail.com</a>
+                </div>
+                <div class="contact-detail">
+                    <span class="contact-detail-icon">📍</span>
+                    <span data-i18n="contact.location">Goult, Luberon, Provence-Alpes-Côte d'Azur</span>
+                </div>
+            </div>
+            <a href="https://fr.airbnb.ca/rooms/1500717634972004913" target="_blank" rel="noopener" class="airbnb-link">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.894 15.09c-.37 1.27-1.18 2.29-2.38 3.03-.48.3-1 .54-1.56.7-.24.07-.49.12-.74.16-.24.04-.48.06-.72.06-.24 0-.48-.02-.72-.06-.25-.04-.5-.09-.74-.16-.56-.16-1.08-.4-1.56-.7-1.2-.74-2.01-1.76-2.38-3.03-.37-1.27-.24-2.6.37-3.77.1-.19.21-.37.33-.55L12 4.77l3.24 6.001c.12.18.23.36.33.55.61 1.17.74 2.5.37 3.77z"/></svg>
+                <span data-i18n="contact.airbnb">Voir l'annonce sur Airbnb</span>
+            </a>
+        </div>
+
+        <div class="contact-form">
+            <p class="form-title" data-i18n="contact.form.title">Envoyer une demande</p>
+            <form class="form-grid" action="mailto:lemazetdesvaines@gmail.com" method="post" enctype="text/plain">
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="prenom" data-i18n="form.prenom.label">Prénom</label>
+                        <input type="text" id="prenom" name="Prenom" data-i18n-placeholder="form.prenom.placeholder" placeholder="Marie" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="nom" data-i18n="form.nom.label">Nom</label>
+                        <input type="text" id="nom" name="Nom" data-i18n-placeholder="form.nom.placeholder" placeholder="Dupont" required>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="email" data-i18n="form.email.label">Email</label>
+                    <input type="email" id="email" name="Email" data-i18n-placeholder="form.email.placeholder" placeholder="marie@exemple.fr" required>
+                </div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="arrivee" data-i18n="form.arrivee.label">Date d'arrivée</label>
+                        <input type="date" id="arrivee" name="Arrivee">
+                    </div>
+                    <div class="form-group">
+                        <label for="depart" data-i18n="form.depart.label">Date de départ</label>
+                        <input type="date" id="depart" name="Depart">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="voyageurs" data-i18n="form.voyageurs.label">Nombre de voyageurs</label>
+                    <select id="voyageurs" name="Voyageurs">
+                        <option value="" data-i18n="form.voyageurs.opt0">Sélectionner…</option>
+                        <option value="1-2" data-i18n="form.voyageurs.opt1">1 – 2 personnes</option>
+                        <option value="3-4" data-i18n="form.voyageurs.opt2">3 – 4 personnes</option>
+                        <option value="5-6" data-i18n="form.voyageurs.opt3">5 – 6 personnes</option>
+                        <option value="7-8" data-i18n="form.voyageurs.opt4">7 – 8 personnes</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="message" data-i18n="form.message.label">Message</label>
+                    <textarea id="message" name="Message" data-i18n-placeholder="form.message.placeholder" placeholder="Votre message, questions particulières…"></textarea>
+                </div>
+                <button type="submit" class="btn-submit" data-i18n="form.submit">Envoyer ma demande</button>
+            </form>
+        </div>
+    </div>
+</section>
+
+<!-- ══ FOOTER ════════════════════════════════════════════════════ -->
+<footer>
+    <span class="footer-logo">Le Mazet des Vaines</span>
+    <p class="footer-tagline" data-i18n="footer.tagline">Goult · Luberon · Provence</p>
+    <ul class="footer-links">
+        <li><a href="#logement"     data-i18n="nav.logement">Le logement</a></li>
+        <li><a href="#galerie"      data-i18n="nav.photos">Photos</a></li>
+        <li><a href="#tarifs"       data-i18n="nav.tarifs">Tarifs</a></li>
+        <li><a href="#localisation" data-i18n="nav.localisation">Localisation</a></li>
+        <li><a href="#contact"      data-i18n="nav.reserver">Réserver</a></li>
+        <li><a href="https://fr.airbnb.ca/rooms/1500717634972004913" target="_blank" rel="noopener">Airbnb</a></li>
+    </ul>
+    <p class="footer-copy">
+        <span data-i18n="footer.copy">© 2025 Le Mazet des Vaines · </span>
+        <a href="mailto:lemazetdesvaines@gmail.com">lemazetdesvaines@gmail.com</a>
+    </p>
+</footer>
+
+<!-- ══ LIGHTBOX ═══════════════════════════════════════════════════ -->
+<div class="lightbox" id="lightbox" role="dialog" aria-modal="true">
+    <button class="lb-btn lb-close" onclick="closeLightbox()">×</button>
+    <button class="lb-btn lb-prev"  onclick="shiftPhoto(-1)">‹</button>
+    <div class="lightbox-img-wrap">
+        <img id="lb-img" src="" alt="">
+        <span class="lb-counter" id="lb-counter"></span>
+    </div>
+    <button class="lb-btn lb-next"  onclick="shiftPhoto(1)">›</button>
+</div>
+
+<!-- ══ SCRIPTS ═══════════════════════════════════════════════════ -->
+<script>
+    /* ── Translations ─────────────────────────────── */
+    const i18n = {
+        fr: {
+            'nav.logement': 'Le logement', 'nav.photos': 'Photos', 'nav.equipements': 'Équipements',
+            'nav.tarifs': 'Tarifs', 'nav.localisation': 'Localisation', 'nav.reserver': 'Réserver',
+            'hero.tag': 'Goult\u00a0·\u00a0Luberon\u00a0·\u00a0Provence',
+            'hero.subtitle': 'Une bergerie du XIX<sup>e</sup> siècle au cœur des vignes,<br>entre ciel provençal et pierres dorées.',
+            'hero.cta1': 'Demander une disponibilité', 'hero.cta2': 'Voir les photos', 'hero.scroll': 'Découvrir',
+            'stat.chambres': 'Chambres', 'stat.voyageurs': 'Voyageurs max.', 'stat.piscine': 'Piscine privée',
+            'stat.vue': 'Vue vignes & Ventoux', 'stat.distance': 'De Goult & Roussillon',
+            'about.tag': 'Le logement',
+            'about.title': 'Une maison de caractère,<br><em>entièrement rénovée</em>',
+            'about.p1': 'Bienvenue au <strong>Mazet des Vaines</strong> — notre maison familiale de charme nichée au cœur du Luberon, à Goult. Cette bergerie du XIX<sup>e</sup> siècle, mitoyenne et sans vis-à-vis, a été entièrement rénovée dans le respect des matériaux d\'origine\u00a0: pierres apparentes, poutres en bois, tomettes et sols en travertin.',
+            'about.p2': 'Elle offre une <strong>vue imprenable sur les vignes</strong>, le village de Roussillon et le Mont Ventoux, une piscine privée en pierres naturelles, la climatisation et un jardin privatif ombragé.',
+            'about.p3': 'Le cadre idéal pour un séjour paisible et ensoleillé en Provence, à quelques minutes des plus beaux villages du Luberon.',
+            'about.cta': 'Vérifier les disponibilités',
+            'gallery.tag': 'Galerie', 'gallery.title': 'Découvrez chaque espace', 'gallery.hint': 'Cliquez sur une photo pour l\'agrandir',
+            'amenities.tag': 'Équipements', 'amenities.title': 'Tout le confort pour votre séjour',
+            'amenity.pool.name': 'Piscine privée', 'amenity.pool.desc': '7,5 × 4\u00a0m, entourée de chaises longues et de vignes',
+            'amenity.ac.name': 'Climatisation', 'amenity.ac.desc': 'Dans les principales pièces de vie',
+            'amenity.wifi.name': 'WiFi haut débit', 'amenity.wifi.desc': 'Connexion rapide dans toute la maison',
+            'amenity.kitchen.name': 'Cuisine équipée', 'amenity.kitchen.desc': 'Four, plaques, lave-vaisselle, frigo, Nespresso',
+            'amenity.terrace.name': 'Terrasse ombragée', 'amenity.terrace.desc': 'Grande table à manger en extérieur',
+            'amenity.bbq.name': 'Barbecue', 'amenity.bbq.desc': 'Disponible sur la terrasse privée',
+            'amenity.parking.name': 'Parking gratuit', 'amenity.parking.desc': '3 à 4 véhicules, sur la propriété',
+            'amenity.tv.name': 'Télévision', 'amenity.tv.desc': 'TV connectée dans le salon',
+            'amenity.washer.name': 'Lave-linge', 'amenity.washer.desc': 'Machine disponible dans la cuisine',
+            'amenity.bath.name': 'Baignoire', 'amenity.bath.desc': 'Salle de bain avec baignoire à l\'étage',
+            'amenity.pets.name': 'Animaux bienvenus', 'amenity.pets.desc': 'Sur demande préalable acceptée',
+            'amenity.house.name': 'Logement entier', 'amenity.house.desc': 'Maison indépendante, sans vis-à-vis',
+            'pricing.tag': 'Tarifs', 'pricing.title': 'Nos formules de location',
+            'pricing.sub': 'Frais de ménage\u00a0: 200\u00a0€\u00a0\u00a0·\u00a0\u00a0Durée minimum\u00a0: nous consulter',
+            'pricing.low.season': 'Basse saison', 'pricing.low.months': 'Novembre – Mars',
+            'pricing.mid.season': 'Moyenne saison', 'pricing.mid.months': 'Avril – Juin & Septembre – Octobre',
+            'pricing.high.season': 'Haute saison', 'pricing.high.months': 'Juillet – Août',
+            'pricing.night': 'par nuit', 'pricing.cleaning': '+ 200\u00a0€ frais de ménage',
+            'pricing.note': 'Tarifs indicatifs · Contactez-nous pour un devis personnalisé',
+            'location.tag': 'Localisation', 'location.title': 'Au cœur du Luberon',
+            'location.text': 'Le Mazet des Vaines est situé à <strong>Goult</strong>, l\'un des plus beaux villages perchés du Luberon. Entourée de vignes et d\'oliviers, la maison offre un accès rapide à tous les sites emblématiques de la région.',
+            'dist.goult': '🏘 Centre de Goult', 'dist.roussillon': '🟠 Roussillon (village ocre)',
+            'dist.gordes': '🏰 Gordes', 'dist.bonnieux': '🏘 Bonnieux',
+            'dist.menerbes': '🏘 Ménerbes & Lacoste', 'dist.marches': '🛒 Marchés provençaux',
+            'dist.marches.time': 'Toute la semaine',
+            'dist.avignon': '🚂 Gare d\'Avignon TGV', 'dist.marseille': '✈️ Aéroport de Marseille',
+            'rules.tag': 'Règlement', 'rules.title': 'Règles du logement',
+            'rule.checkin.label': 'Arrivée', 'rule.checkin.value': 'À partir de 16h00',
+            'rule.checkout.label': 'Départ', 'rule.checkout.value': 'Avant 10h00',
+            'rule.capacity.label': 'Capacité', 'rule.capacity.value': '8 voyageurs maximum',
+            'rule.pets.label': 'Animaux', 'rule.pets.value': 'Acceptés sur demande',
+            'rule.smoking.label': 'Tabac', 'rule.smoking.value': 'Non-fumeur (intérieur)',
+            'contact.tag': 'Contact', 'contact.title': 'Réservez votre séjour en Provence',
+            'contact.text': 'Pour vérifier les disponibilités ou poser vos questions, contactez-nous directement. Nous répondons dans les 24 heures.',
+            'contact.location': 'Goult, Luberon, Provence-Alpes-Côte d\'Azur',
+            'contact.airbnb': 'Voir l\'annonce sur Airbnb', 'contact.form.title': 'Envoyer une demande',
+            'form.prenom.label': 'Prénom', 'form.prenom.placeholder': 'Marie',
+            'form.nom.label': 'Nom', 'form.nom.placeholder': 'Dupont',
+            'form.email.label': 'Email', 'form.email.placeholder': 'marie@exemple.fr',
+            'form.arrivee.label': 'Date d\'arrivée', 'form.depart.label': 'Date de départ',
+            'form.voyageurs.label': 'Nombre de voyageurs',
+            'form.voyageurs.opt0': 'Sélectionner…', 'form.voyageurs.opt1': '1 – 2 personnes',
+            'form.voyageurs.opt2': '3 – 4 personnes', 'form.voyageurs.opt3': '5 – 6 personnes',
+            'form.voyageurs.opt4': '7 – 8 personnes',
+            'form.message.label': 'Message', 'form.message.placeholder': 'Votre message, questions particulières…',
+            'form.submit': 'Envoyer ma demande',
+            'footer.tagline': 'Goult\u00a0·\u00a0Luberon\u00a0·\u00a0Provence',
+            'footer.copy': '© 2025 Le Mazet des Vaines\u00a0·\u00a0',
+            'page.title': 'Le Mazet des Vaines – Location en Luberon, Goult',
+        },
+        en: {
+            'nav.logement': 'The house', 'nav.photos': 'Photos', 'nav.equipements': 'Amenities',
+            'nav.tarifs': 'Rates', 'nav.localisation': 'Location', 'nav.reserver': 'Book',
+            'hero.tag': 'Goult\u00a0·\u00a0Luberon\u00a0·\u00a0Provence',
+            'hero.subtitle': 'A 19th-century sheepfold in the heart of the vineyards,<br>between Provençal skies and golden stone.',
+            'hero.cta1': 'Check availability', 'hero.cta2': 'View photos', 'hero.scroll': 'Discover',
+            'stat.chambres': 'Bedrooms', 'stat.voyageurs': 'Guests max.', 'stat.piscine': 'Private pool',
+            'stat.vue': 'Vineyard & Ventoux view', 'stat.distance': 'From Goult & Roussillon',
+            'about.tag': 'The house',
+            'about.title': 'A character property,<br><em>fully renovated</em>',
+            'about.p1': 'Welcome to <strong>Le Mazet des Vaines</strong> — our charming family home nestled in the heart of the Luberon, in Goult. This 19th-century sheepfold, semi-detached and fully private, has been entirely renovated while preserving original materials: exposed stone walls, wooden beams, terracotta tiles and travertine floors.',
+            'about.p2': 'It offers a <strong>breathtaking view over the vineyards</strong>, the village of Roussillon and Mont Ventoux, a private natural stone pool, air conditioning and a shaded private garden.',
+            'about.p3': 'The perfect setting for a peaceful, sun-filled stay in Provence, just minutes from the most beautiful villages in the Luberon.',
+            'about.cta': 'Check availability',
+            'gallery.tag': 'Gallery', 'gallery.title': 'Discover every space', 'gallery.hint': 'Click on a photo to enlarge',
+            'amenities.tag': 'Amenities', 'amenities.title': 'Everything you need for a perfect stay',
+            'amenity.pool.name': 'Private pool', 'amenity.pool.desc': '7.5 × 4\u00a0m, surrounded by sun loungers and vineyards',
+            'amenity.ac.name': 'Air conditioning', 'amenity.ac.desc': 'In the main living areas',
+            'amenity.wifi.name': 'High-speed WiFi', 'amenity.wifi.desc': 'Fast connection throughout the house',
+            'amenity.kitchen.name': 'Fully equipped kitchen', 'amenity.kitchen.desc': 'Oven, hob, dishwasher, fridge, Nespresso',
+            'amenity.terrace.name': 'Shaded terrace', 'amenity.terrace.desc': 'Large outdoor dining table',
+            'amenity.bbq.name': 'Barbecue', 'amenity.bbq.desc': 'Available on the private terrace',
+            'amenity.parking.name': 'Free parking', 'amenity.parking.desc': '3 to 4 vehicles, on the property',
+            'amenity.tv.name': 'Television', 'amenity.tv.desc': 'Smart TV in the living room',
+            'amenity.washer.name': 'Washing machine', 'amenity.washer.desc': 'Available in the kitchen',
+            'amenity.bath.name': 'Bathtub', 'amenity.bath.desc': 'Bathroom with bathtub on the first floor',
+            'amenity.pets.name': 'Pets welcome', 'amenity.pets.desc': 'On prior request',
+            'amenity.house.name': 'Entire property', 'amenity.house.desc': 'Fully independent, no overlooking neighbours',
+            'pricing.tag': 'Rates', 'pricing.title': 'Our rental options',
+            'pricing.sub': 'Cleaning fee: €200\u00a0\u00a0·\u00a0\u00a0Minimum stay: enquire',
+            'pricing.low.season': 'Low season', 'pricing.low.months': 'November – March',
+            'pricing.mid.season': 'Mid season', 'pricing.mid.months': 'April – June & September – October',
+            'pricing.high.season': 'High season', 'pricing.high.months': 'July – August',
+            'pricing.night': 'per night', 'pricing.cleaning': '+ €200 cleaning fee',
+            'pricing.note': 'Indicative rates · Contact us for a personalised quote',
+            'location.tag': 'Location', 'location.title': 'In the heart of the Luberon',
+            'location.text': 'Le Mazet des Vaines is located in <strong>Goult</strong>, one of the most beautiful hilltop villages in the Luberon. Surrounded by vineyards and olive trees, the house provides quick access to all the iconic sites of the region.',
+            'dist.goult': '🏘 Goult town centre', 'dist.roussillon': '🟠 Roussillon (ochre village)',
+            'dist.gordes': '🏰 Gordes', 'dist.bonnieux': '🏘 Bonnieux',
+            'dist.menerbes': '🏘 Ménerbes & Lacoste', 'dist.marches': '🛒 Provençal markets',
+            'dist.marches.time': 'All week long',
+            'dist.avignon': '🚂 Avignon TGV station', 'dist.marseille': '✈️ Marseille airport',
+            'rules.tag': 'House rules', 'rules.title': 'House rules',
+            'rule.checkin.label': 'Check-in', 'rule.checkin.value': 'From 4:00 PM',
+            'rule.checkout.label': 'Check-out', 'rule.checkout.value': 'Before 10:00 AM',
+            'rule.capacity.label': 'Capacity', 'rule.capacity.value': '8 guests maximum',
+            'rule.pets.label': 'Pets', 'rule.pets.value': 'Welcome on request',
+            'rule.smoking.label': 'Smoking', 'rule.smoking.value': 'No smoking (indoors)',
+            'contact.tag': 'Contact', 'contact.title': 'Book your stay in Provence',
+            'contact.text': 'To check availability or ask any questions, contact us directly. We respond within 24 hours.',
+            'contact.location': 'Goult, Luberon, Provence-Alpes-Côte d\'Azur',
+            'contact.airbnb': 'View on Airbnb', 'contact.form.title': 'Send a request',
+            'form.prenom.label': 'First name', 'form.prenom.placeholder': 'Mary',
+            'form.nom.label': 'Last name', 'form.nom.placeholder': 'Smith',
+            'form.email.label': 'Email', 'form.email.placeholder': 'mary@example.com',
+            'form.arrivee.label': 'Check-in date', 'form.depart.label': 'Check-out date',
+            'form.voyageurs.label': 'Number of guests',
+            'form.voyageurs.opt0': 'Select…', 'form.voyageurs.opt1': '1 – 2 guests',
+            'form.voyageurs.opt2': '3 – 4 guests', 'form.voyageurs.opt3': '5 – 6 guests',
+            'form.voyageurs.opt4': '7 – 8 guests',
+            'form.message.label': 'Message', 'form.message.placeholder': 'Your message, special requests…',
+            'form.submit': 'Send my request',
+            'footer.tagline': 'Goult\u00a0·\u00a0Luberon\u00a0·\u00a0Provence',
+            'footer.copy': '© 2025 Le Mazet des Vaines\u00a0·\u00a0',
+            'page.title': 'Le Mazet des Vaines – Holiday rental in Luberon, Goult',
+        }
+    };
+
+    let currentLang = localStorage.getItem('lang') || 'fr';
+
+    function setLang(lang) {
+        currentLang = lang;
+        localStorage.setItem('lang', lang);
+        document.documentElement.lang = lang;
+        document.title = i18n[lang]['page.title'];
+
+        // Update lang buttons
+        document.querySelectorAll('.lang-btn').forEach(btn => {
+            btn.classList.toggle('active', btn.textContent === lang.toUpperCase());
+        });
+
+        // Text content
+        document.querySelectorAll('[data-i18n]').forEach(el => {
+            const key = el.dataset.i18n;
+            if (i18n[lang][key] !== undefined) el.textContent = i18n[lang][key];
+        });
+
+        // innerHTML (for elements with <strong>, <em>, <br>, <sup>)
+        document.querySelectorAll('[data-i18n-html]').forEach(el => {
+            const key = el.dataset.i18nHtml;
+            if (i18n[lang][key] !== undefined) el.innerHTML = i18n[lang][key];
+        });
+
+        // Placeholders
+        document.querySelectorAll('[data-i18n-placeholder]').forEach(el => {
+            const key = el.dataset.i18nPlaceholder;
+            if (i18n[lang][key] !== undefined) el.placeholder = i18n[lang][key];
+        });
+    }
+
+    // Init on load
+    setLang(currentLang);
+
+    /* ── Navbar on scroll ── */
+    const navbar = document.getElementById('navbar');
+    window.addEventListener('scroll', () => {
+        navbar.classList.toggle('scrolled', window.scrollY > 60);
+    }, { passive: true });
+
+    /* ── Gallery lightbox ── */
+    const galleryPhotos = [
+        "photos/DJI_0348-HDR-Modifier.jpg",
+        "photos/b17d5299-145f-41eb-bc6e-a5f20b286f02.JPG",
+        "photos/3ff4aa99-2428-4a5f-b2a9-02c4276b18e2.JPG",
+        "photos/ef9a5e1c-5166-4df8-aee5-707742908b69.jpg",
+        "photos/68bafc7f-fb76-4960-ae7d-f5af8f00f8bf.jpg",
+        "photos/DSC04443-HDR-Modifier.jpg",
+        "photos/2892fe39-4893-44f9-a292-c0b8e9589869.jpg",
+        "photos/DSC04360-HDR-Modifier.jpg",
+        "photos/26257826-1255-40a3-9cc1-f94cdcf0f3bc.JPG",
+        "photos/688c1fa5-0b0b-40a3-9750-6e0758ca899a.JPG",
+        "photos/6d4197b3-de66-42b3-b778-765d5e4de2be.JPG",
+        "photos/DSC04433-HDR-Modifier.jpg",
+    ];
+
+    let currentPhoto = 0;
+
+    document.querySelectorAll('.gallery-item').forEach(item => {
+        item.addEventListener('click', () => openLightbox(parseInt(item.dataset.index)));
+    });
+
+    function openLightbox(index) {
+        currentPhoto = index;
+        document.getElementById('lb-img').src = galleryPhotos[index];
+        updateCounter();
+        document.getElementById('lightbox').classList.add('active');
+        document.body.style.overflow = 'hidden';
+    }
+
+    function closeLightbox() {
+        document.getElementById('lightbox').classList.remove('active');
+        document.body.style.overflow = '';
+    }
+
+    function shiftPhoto(dir) {
+        currentPhoto = (currentPhoto + dir + galleryPhotos.length) % galleryPhotos.length;
+        document.getElementById('lb-img').src = galleryPhotos[currentPhoto];
+        updateCounter();
+    }
+
+    function updateCounter() {
+        document.getElementById('lb-counter').textContent = (currentPhoto + 1) + ' / ' + galleryPhotos.length;
+    }
+
+    document.getElementById('lightbox').addEventListener('click', function(e) {
+        if (e.target === this) closeLightbox();
+    });
+
+    document.addEventListener('keydown', e => {
+        if (!document.getElementById('lightbox').classList.contains('active')) return;
+        if (e.key === 'Escape')     closeLightbox();
+        if (e.key === 'ArrowLeft')  shiftPhoto(-1);
+        if (e.key === 'ArrowRight') shiftPhoto(1);
+    });
+
+    /* ── Date input min ── */
+    const today = new Date().toISOString().split('T')[0];
+    document.getElementById('arrivee').min = today;
+    document.getElementById('depart').min  = today;
+    document.getElementById('arrivee').addEventListener('change', function() {
+        document.getElementById('depart').min = this.value;
+    });
+</script>
+
+</body>
+</html>

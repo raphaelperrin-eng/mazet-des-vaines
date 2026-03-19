@@ -1,0 +1,482 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Actualités – Le Mazet des Vaines</title>
+    <meta name="description" content="Les dernières nouvelles du Mazet des Vaines : rénovations, disponibilités, saisons et actualités du Luberon.">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+
+    <style>
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+        :root {
+            --gold:  #B8965A;
+            --terra: #A8552A;
+            --cream: #FDFAF5;
+            --dark:  #1C1A17;
+            --mid:   #5A544A;
+            --stone: #C9C2B4;
+            --light: #F0EAE0;
+        }
+
+        html { scroll-behavior: smooth; }
+
+        body {
+            font-family: 'Lato', sans-serif;
+            background: var(--cream);
+            color: var(--dark);
+            font-weight: 300;
+            line-height: 1.7;
+        }
+
+        /* ── NAVIGATION ─────────────────────────────── */
+        nav {
+            position: fixed;
+            top: 0; left: 0; right: 0;
+            z-index: 100;
+            padding: 24px 48px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: all 0.35s ease;
+            background: rgba(28, 26, 23, 0.96);
+            backdrop-filter: blur(12px);
+        }
+
+        .nav-logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.2rem;
+            color: white;
+            text-decoration: none;
+            letter-spacing: 0.5px;
+            flex-shrink: 0;
+        }
+
+        .nav-right {
+            display: flex;
+            align-items: center;
+            gap: 32px;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 28px;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: rgba(255,255,255,0.82);
+            text-decoration: none;
+            font-size: 0.78rem;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            transition: color 0.2s;
+            white-space: nowrap;
+        }
+
+        .nav-links a:hover { color: var(--gold); }
+        .nav-links a.active { color: var(--gold); }
+
+        .nav-cta {
+            padding: 10px 22px;
+            background: var(--gold);
+            color: white !important;
+            text-decoration: none;
+            font-size: 0.78rem;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            transition: background 0.2s !important;
+        }
+
+        .nav-cta:hover { background: var(--terra) !important; }
+
+        /* Language toggle */
+        .lang-select {
+            background: transparent;
+            border: 1px solid rgba(255,255,255,0.35);
+            color: white;
+            font-family: 'Lato', sans-serif;
+            font-size: 0.8rem;
+            padding: 5px 10px;
+            cursor: pointer;
+            outline: none;
+            border-radius: 2px;
+            appearance: auto;
+        }
+        .lang-select option { background: #1C1A17; color: white; }
+
+        /* ── HERO SIMPLE ──────────────────────────── */
+        .page-hero {
+            background: var(--dark);
+            padding: 140px 48px 72px;
+            text-align: center;
+        }
+
+        .page-hero .hero-tag {
+            display: block;
+            font-size: 0.72rem;
+            letter-spacing: 4px;
+            text-transform: uppercase;
+            color: var(--gold);
+            margin-bottom: 18px;
+        }
+
+        .page-hero h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(2.2rem, 5vw, 3.8rem);
+            color: white;
+            line-height: 1.1;
+            margin-bottom: 16px;
+        }
+
+        .page-hero .hero-sub {
+            color: rgba(255,255,255,0.6);
+            font-size: 1rem;
+            max-width: 500px;
+            margin: 0 auto;
+        }
+
+        /* ── MAIN CONTENT ─────────────────────────── */
+        main { max-width: 1100px; margin: 0 auto; padding: 80px 48px; }
+
+        /* ── GRILLE D'ARTICLES ─────────────────────── */
+        .articles-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 32px;
+        }
+
+        /* ── CARTE ARTICLE ─────────────────────────── */
+        .article-card {
+            background: white;
+            border: 1px solid var(--light);
+            overflow: hidden;
+            transition: box-shadow 0.2s, transform 0.2s;
+        }
+
+        .article-card:hover {
+            box-shadow: 0 8px 32px rgba(0,0,0,0.08);
+            transform: translateY(-3px);
+        }
+
+        /* Photo optionnelle */
+        .article-photo {
+            width: 100%;
+            height: 220px;
+            object-fit: cover;
+            display: block;
+        }
+
+        .article-body { padding: 32px; }
+
+        .article-meta {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 16px;
+        }
+
+        .article-emoji { font-size: 1.8rem; line-height: 1; }
+
+        .article-date {
+            font-size: 0.72rem;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: var(--gold);
+            font-weight: 700;
+        }
+
+        .article-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.25rem;
+            color: var(--dark);
+            line-height: 1.3;
+            margin-bottom: 14px;
+        }
+
+        .article-text {
+            font-size: 0.92rem;
+            color: var(--mid);
+            line-height: 1.85;
+        }
+
+        /* Message affiché si aucun article */
+        .no-articles {
+            grid-column: 1 / -1;
+            text-align: center;
+            padding: 64px 24px;
+            color: var(--stone);
+            font-size: 1rem;
+        }
+
+        /* ── FOOTER ──────────────────────────────── */
+        footer { background: var(--dark); padding: 48px; text-align: center; }
+
+        .footer-logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.5rem;
+            color: white;
+            display: block;
+            margin-bottom: 8px;
+        }
+
+        .footer-tagline {
+            font-size: 0.78rem;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: rgba(255,255,255,0.35);
+            margin-bottom: 28px;
+        }
+
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 28px;
+            list-style: none;
+            margin-bottom: 28px;
+            flex-wrap: wrap;
+        }
+
+        .footer-links a {
+            color: rgba(255,255,255,0.45);
+            text-decoration: none;
+            font-size: 0.78rem;
+            letter-spacing: 1px;
+            transition: color 0.2s;
+        }
+
+        .footer-links a:hover { color: var(--gold); }
+        .footer-copy { font-size: 0.72rem; color: rgba(255,255,255,0.25); }
+        .footer-copy a { color: var(--gold); text-decoration: none; }
+
+        /* ── RESPONSIVE ──────────────────────────── */
+        @media (max-width: 960px) {
+            nav { padding: 16px 24px; }
+            .nav-links { display: none; }
+            main { padding: 60px 24px; }
+            .page-hero { padding: 120px 24px 56px; }
+            .articles-grid { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+
+<body>
+
+<!-- ══ NAVIGATION ════════════════════════════════════════════════ -->
+<nav id="navbar">
+    <a href="index.html" class="nav-logo">Le Mazet des Vaines</a>
+    <div class="nav-right">
+        <ul class="nav-links">
+            <li><a href="index.html" data-i18n="nav.back">← Retour au site</a></li>
+            <li><a href="index.html#contact" class="nav-cta" data-i18n="nav.reserver">Réserver</a></li>
+            <li><a href="recommandations.html" data-i18n="nav.recommandations">Recommandations</a></li>
+            <li><a href="actualites.html" class="active" data-i18n="nav.actualites">Actualités</a></li>
+        </ul>
+        <select class="lang-select" onchange="setLang(this.value)">
+            <option value="fr">🇫🇷 FR</option>
+            <option value="en">🇬🇧 EN</option>
+        </select>
+    </div>
+</nav>
+
+<!-- ══ HERO ══════════════════════════════════════════════════════ -->
+<div class="page-hero">
+    <span class="hero-tag" data-i18n="hero.tag">Goult · Luberon · Provence</span>
+    <h1 data-i18n="page.h1">Actualités</h1>
+    <p class="hero-sub" data-i18n="page.subtitle">Les dernières nouvelles du Mazet</p>
+</div>
+
+<!-- ══ CONTENU PRINCIPAL ════════════════════════════════════════ -->
+<main>
+    <!-- Les articles sont injectés ici par le script -->
+    <div class="articles-grid" id="articles-container"></div>
+</main>
+
+<!-- ══ FOOTER ════════════════════════════════════════════════════ -->
+<footer>
+    <span class="footer-logo">Le Mazet des Vaines</span>
+    <p class="footer-tagline" data-i18n="footer.tagline">Goult · Luberon · Provence</p>
+    <ul class="footer-links">
+        <li><a href="index.html#logement" data-i18n="nav.logement">Le logement</a></li>
+        <li><a href="index.html#galerie"  data-i18n="nav.photos">Photos</a></li>
+        <li><a href="index.html#tarifs"   data-i18n="nav.tarifs">Tarifs</a></li>
+        <li><a href="index.html#contact"  data-i18n="nav.reserver">Réserver</a></li>
+        <li><a href="recommandations.html" data-i18n="nav.recommandations">Recommandations</a></li>
+        <li><a href="actualites.html"      data-i18n="nav.actualites">Actualités</a></li>
+        <li><a href="mentions-legales.html" data-i18n="footer.legal">Mentions légales</a></li>
+    </ul>
+    <p class="footer-copy">
+        <span data-i18n="footer.copy">© 2025 Le Mazet des Vaines · </span>
+        <a href="mailto:lemazetdesvaines@gmail.com">lemazetdesvaines@gmail.com</a>
+    </p>
+</footer>
+
+<!-- ══ SCRIPTS ═══════════════════════════════════════════════════ -->
+<script>
+
+/* ═══════════════════════════════════════════════════════════════
+   ACTUALITÉS DU MAZET — ZONE D'ÉDITION FACILE
+   ─────────────────────────────────────────────────────────────
+   Pour AJOUTER un article :
+     1. Copier un bloc { ... , ... } ci-dessous
+     2. Le coller au DÉBUT du tableau (les plus récents d'abord)
+     3. Remplir les champs titre_fr, titre_en, texte_fr, texte_en
+     4. Modifier la date au format 'AAAA-MM-JJ'
+     5. (Optionnel) Ajouter un chemin photo, ex: 'photos/ete2025.jpg'
+
+   Pour SUPPRIMER un article :
+     Effacer le bloc { ... } correspondant (et la virgule qui suit).
+
+   Pour MASQUER temporairement un article sans le supprimer :
+     Ajouter   visible: false   dans le bloc.
+   ═══════════════════════════════════════════════════════════════ */
+const articles = [
+    {
+        date: '2025-03-01',
+        emoji: '🌸',
+        titre_fr: 'Le printemps arrive au Mazet !',
+        titre_en: 'Spring is arriving at the Mazet!',
+        texte_fr: 'Les amandiers sont en fleurs, les températures remontent doucement… le Luberon se réveille. C\'est la saison idéale pour visiter la région avant l\'affluence estivale. Nos premières disponibilités de printemps sont ouvertes !',
+        texte_en: 'The almond trees are blossoming, temperatures are gently rising… the Luberon is waking up. It\'s the perfect season to visit the region before the summer crowds. Our first spring availability is now open!',
+        photo: '' // Optionnel : chemin vers une photo, ex: 'photos/printemps.jpg'
+    },
+    {
+        date: '2025-01-15',
+        emoji: '🏊',
+        titre_fr: 'Rénovation de la piscine en cours',
+        titre_en: 'Pool renovation underway',
+        texte_fr: 'Notre piscine est en cours de rénovation pour vous offrir un espace encore plus beau cet été. Les travaux seront terminés avant la saison. Nous avons hâte de vous montrer le résultat !',
+        texte_en: 'Our pool is currently being renovated to offer you an even more beautiful space this summer. Works will be completed before the season. We can\'t wait to show you the result!',
+        photo: ''
+    }
+];
+/* ─── FIN DE LA ZONE D'ÉDITION ────────────────────────────────── */
+
+
+    /* ── Traductions FR / EN ──────────────────────── */
+    const i18n = {
+        fr: {
+            'nav.back':            '← Retour au site',
+            'nav.reserver':        'Réserver',
+            'nav.recommandations': 'Recommandations',
+            'nav.actualites':      'Actualités',
+            'nav.logement':        'Le logement',
+            'nav.photos':          'Photos',
+            'nav.tarifs':          'Tarifs',
+            'hero.tag':            'Goult\u00a0·\u00a0Luberon\u00a0·\u00a0Provence',
+            'page.h1':             'Actualités',
+            'page.subtitle':       'Les dernières nouvelles du Mazet',
+            'no.articles':         'Aucun article pour le moment. Revenez bientôt !',
+            'footer.tagline':      'Goult\u00a0·\u00a0Luberon\u00a0·\u00a0Provence',
+            'footer.copy':         '© 2025 Le Mazet des Vaines\u00a0·\u00a0',
+            'footer.legal':        'Mentions légales',
+            'page.title':          'Actualités – Le Mazet des Vaines',
+        },
+        en: {
+            'nav.back':            '← Back to site',
+            'nav.reserver':        'Book',
+            'nav.recommandations': 'Recommendations',
+            'nav.actualites':      'News',
+            'nav.logement':        'The house',
+            'nav.photos':          'Photos',
+            'nav.tarifs':          'Rates',
+            'hero.tag':            'Goult\u00a0·\u00a0Luberon\u00a0·\u00a0Provence',
+            'page.h1':             'News',
+            'page.subtitle':       'The latest from the Mazet',
+            'no.articles':         'No articles yet. Check back soon!',
+            'footer.tagline':      'Goult\u00a0·\u00a0Luberon\u00a0·\u00a0Provence',
+            'footer.copy':         '© 2025 Le Mazet des Vaines\u00a0·\u00a0',
+            'footer.legal':        'Legal notices',
+            'page.title':          'News – Le Mazet des Vaines',
+        }
+    };
+
+    /* ── Langue stockée ou FR par défaut ─────────── */
+    let currentLang = localStorage.getItem('lang') || 'fr';
+
+    /* ── Formate une date ISO en texte lisible ────── */
+    function formatDate(dateStr, lang) {
+        const date = new Date(dateStr + 'T12:00:00'); // heure fixée pour éviter les décalages UTC
+        const options = { year: 'numeric', month: 'long', day: 'numeric' };
+        const locale = lang === 'en' ? 'en-GB' : 'fr-FR';
+        return date.toLocaleDateString(locale, options);
+    }
+
+    /* ── Génère les cartes d'articles ────────────── */
+    function renderArticles(lang) {
+        const container = document.getElementById('articles-container');
+        container.innerHTML = '';
+
+        // Filtrer les articles visibles (visible !== false)
+        const visible = articles.filter(a => a.visible !== false);
+
+        if (visible.length === 0) {
+            container.innerHTML = '<p class="no-articles">' + (i18n[lang]['no.articles'] || '') + '</p>';
+            return;
+        }
+
+        visible.forEach(article => {
+            const titre = lang === 'en' ? article.titre_en : article.titre_fr;
+            const texte = lang === 'en' ? article.texte_en : article.texte_fr;
+            const dateStr = formatDate(article.date, lang);
+
+            let photoHTML = '';
+            if (article.photo && article.photo.trim() !== '') {
+                photoHTML = '<img class="article-photo" src="' + article.photo + '" alt="' + titre + '" loading="lazy">';
+            }
+
+            const card = document.createElement('article');
+            card.className = 'article-card';
+            card.innerHTML = photoHTML + `
+                <div class="article-body">
+                    <div class="article-meta">
+                        <span class="article-emoji" aria-hidden="true">${article.emoji || '📰'}</span>
+                        <span class="article-date">${dateStr}</span>
+                    </div>
+                    <h2 class="article-title">${titre}</h2>
+                    <p class="article-text">${texte}</p>
+                </div>`;
+            container.appendChild(card);
+        });
+    }
+
+    /* ── Applique la langue à toute la page ──────── */
+    function setLang(lang) {
+        // Fallback vers 'fr' si la langue n'est pas supportée
+        if (!i18n[lang]) lang = 'fr';
+        currentLang = lang;
+        localStorage.setItem('lang', lang);
+        document.documentElement.lang = lang;
+        document.title = i18n[lang]['page.title'];
+
+        // Mettre à jour le sélecteur
+        const sel = document.querySelector('.lang-select');
+        if (sel) sel.value = lang;
+
+        // Textes simples
+        document.querySelectorAll('[data-i18n]').forEach(el => {
+            const key = el.dataset.i18n;
+            if (i18n[lang][key] !== undefined) el.textContent = i18n[lang][key];
+        });
+
+        // Textes avec HTML (innerHTML)
+        document.querySelectorAll('[data-i18n-html]').forEach(el => {
+            const key = el.dataset.i18nHtml;
+            if (i18n[lang][key] !== undefined) el.innerHTML = i18n[lang][key];
+        });
+
+        // Re-générer les articles dans la bonne langue
+        renderArticles(lang);
+    }
+
+    // Initialisation au chargement de la page
+    setLang(currentLang);
+
+</script>
+
+</body>
+</html>

@@ -50,6 +50,12 @@
       },
       "email": "lemazetdesvaines@gmail.com",
       "priceRange": "€€€",
+      "aggregateRating": {
+        "@type": "AggregateRating",
+        "ratingValue": "4.57",
+        "bestRating": "5",
+        "reviewCount": "7"
+      },
       "checkinTime": "16:00",
       "checkoutTime": "10:00",
       "petsAllowed": true,
@@ -906,6 +912,60 @@
             <div class="amenity"><span class="amenity-icon">🛁</span><div><div class="amenity-name" data-i18n="amenity.bath.name">Baignoire</div><div class="amenity-desc" data-i18n="amenity.bath.desc">Salle de bain avec baignoire à l'étage</div></div></div>
             <div class="amenity"><span class="amenity-icon">🐾</span><div><div class="amenity-name" data-i18n="amenity.pets.name">Animaux bienvenus</div><div class="amenity-desc" data-i18n="amenity.pets.desc">Sur demande préalable acceptée</div></div></div>
             <div class="amenity"><span class="amenity-icon">🏡</span><div><div class="amenity-name" data-i18n="amenity.house.name">Logement entier</div><div class="amenity-desc" data-i18n="amenity.house.desc">Maison indépendante, sans vis-à-vis</div></div></div>
+        </div>
+    </div>
+</section>
+
+<!-- ══ AVIS ═══════════════════════════════════════════════════════ -->
+<style>
+    #avis { background: var(--cream, #FDFAF5); }
+    .avis-inner { max-width: 1100px; margin: 0 auto; padding: 0 24px; }
+    .avis-head { text-align: center; margin-bottom: 34px; }
+    .avis-rating { margin-top: 12px; color: var(--mid, #5A544A); font-size: 0.9rem; }
+    .avis-rating .stars { color: var(--gold, #B8965A); letter-spacing: 2px; margin-right: 6px; }
+    .avis-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(235px, 1fr)); gap: 24px; }
+    .avis-card { background: #fff; border: 1px solid #ece7dd; border-radius: 10px; padding: 26px; display: flex; flex-direction: column; gap: 14px; }
+    .avis-stars { color: var(--gold, #B8965A); letter-spacing: 2px; font-size: 0.95rem; }
+    .avis-quote { font-style: italic; color: var(--dark, #1C1A17); line-height: 1.6; font-size: 0.92rem; flex: 1; }
+    .avis-author { font-weight: 700; color: var(--dark, #1C1A17); font-size: 0.88rem; }
+    .avis-meta { color: var(--mid, #5A544A); font-size: 0.8rem; margin-top: -10px; }
+    .avis-cta-wrap { text-align: center; margin-top: 34px; }
+</style>
+<section id="avis">
+    <div class="avis-inner">
+        <div class="avis-head">
+            <span class="section-tag" id="avis-tag">Avis</span>
+            <h2 class="section-title" id="avis-title">Ils ont séjourné au Mazet</h2>
+            <p class="avis-rating"><span class="stars">★★★★★</span><span id="avis-sub">Note moyenne 4,57/5 · 7 avis vérifiés sur Airbnb</span></p>
+        </div>
+        <div class="avis-grid">
+            <div class="avis-card">
+                <div class="avis-stars">★★★★★</div>
+                <p class="avis-quote">« Une magnifique maison de vacances, dans un endroit privé avec une vue de rêve sur les vignobles. Un excellent point de départ pour explorer le magnifique Luberon. Merci pour ce beau séjour ! »</p>
+                <div class="avis-author">Getha</div>
+                <div class="avis-meta">Mai 2026 · séjour d'une semaine</div>
+            </div>
+            <div class="avis-card">
+                <div class="avis-stars">★★★★★</div>
+                <p class="avis-quote">« Une villa super bien située, un décor magnifique, super calme. L'extérieur est juste incroyable avec la piscine, les chaises, les tables et le barbecue ! Je recommande fortement ! »</p>
+                <div class="avis-author">Alban</div>
+                <div class="avis-meta">Mai 2026</div>
+            </div>
+            <div class="avis-card">
+                <div class="avis-stars">★★★★★</div>
+                <p class="avis-quote">« Un séjour tellement beau et relaxant ! Nous ne pouvons trop recommander cette villa. C'était parfait pour nos vacances ! »</p>
+                <div class="avis-author">Millie</div>
+                <div class="avis-meta">Juin 2026</div>
+            </div>
+            <div class="avis-card">
+                <div class="avis-stars">★★★★★</div>
+                <p class="avis-quote">« Emplacement idéal, maison agréable. »</p>
+                <div class="avis-author">Amandine</div>
+                <div class="avis-meta">Genève · avril 2026</div>
+            </div>
+        </div>
+        <div class="avis-cta-wrap">
+            <a href="https://www.airbnb.fr/rooms/1500717634972004913/reviews" target="_blank" rel="noopener" class="btn btn-outline" id="avis-cta">Voir tous les avis sur Airbnb</a>
         </div>
     </div>
 </section>
@@ -1932,6 +1992,33 @@
         .then(r => r.json())
         .then(d => { booked = new Set(d.bookedDates || []); updatedISO = (d.updated && d.updated !== '(initial)') ? d.updated : null; applyLang(); })
         .catch(() => applyLang());
+})();
+</script>
+
+<script>
+/* ── Libellés de la section Avis (multilingue) ── */
+(function() {
+    const T = {
+        fr: { tag:'Avis', title:'Ils ont séjourné au Mazet', sub:'Note moyenne 4,57/5 · 7 avis vérifiés sur Airbnb', cta:'Voir tous les avis sur Airbnb' },
+        en: { tag:'Reviews', title:'They stayed at the Mazet', sub:'Average rating 4.57/5 · 7 verified reviews on Airbnb', cta:'See all reviews on Airbnb' },
+        es: { tag:'Opiniones', title:'Se alojaron en el Mazet', sub:'Valoración media 4,57/5 · 7 opiniones verificadas en Airbnb', cta:'Ver todas las opiniones en Airbnb' },
+        de: { tag:'Bewertungen', title:'Sie wohnten im Mazet', sub:'Durchschnitt 4,57/5 · 7 verifizierte Bewertungen auf Airbnb', cta:'Alle Bewertungen auf Airbnb ansehen' },
+        nl: { tag:'Beoordelingen', title:'Zij verbleven in het Mazet', sub:'Gemiddeld 4,57/5 · 7 geverifieerde beoordelingen op Airbnb', cta:'Alle beoordelingen op Airbnb' },
+        it: { tag:'Recensioni', title:'Hanno soggiornato al Mazet', sub:'Valutazione media 4,57/5 · 7 recensioni verificate su Airbnb', cta:'Vedi tutte le recensioni su Airbnb' },
+        ja: { tag:'レビュー', title:'Mazetに宿泊されたゲスト', sub:'平均評価 4.57/5・Airbnbの認証済みレビュー7件', cta:'Airbnbですべてのレビューを見る' },
+        pt: { tag:'Avaliações', title:'Ficaram no Mazet', sub:'Nota média 4,57/5 · 7 avaliações verificadas no Airbnb', cta:'Ver todas as avaliações no Airbnb' }
+    };
+    const el = (id) => document.getElementById(id);
+    if (!el('avis-title')) return;
+    function apply() {
+        const lang = (typeof currentLang !== 'undefined' && T[currentLang]) ? currentLang : 'fr';
+        const t = T[lang];
+        const set = (id, v) => { const e = el(id); if (e) e.textContent = v; };
+        set('avis-tag', t.tag); set('avis-title', t.title); set('avis-sub', t.sub); set('avis-cta', t.cta);
+    }
+    const sel = document.querySelector('.lang-select');
+    if (sel) sel.addEventListener('change', apply);
+    apply();
 })();
 </script>
 

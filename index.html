@@ -1011,7 +1011,11 @@
 
         <div class="contact-form">
             <p class="form-title" data-i18n="contact.form.title">Envoyer une demande</p>
-            <form class="form-grid" action="mailto:lemazetdesvaines@gmail.com" method="post" enctype="text/plain">
+            <form class="form-grid" id="reservation-form" action="https://api.web3forms.com/submit" method="POST">
+                <input type="hidden" name="access_key" value="4e5c2f87-85fd-4a4a-93f6-979aea5a411e">
+                <input type="hidden" name="subject" value="Nouvelle demande de réservation — Le Mazet des Vaines">
+                <input type="hidden" name="from_name" value="Site Le Mazet des Vaines">
+                <input type="checkbox" name="botcheck" class="hidden" style="display:none" tabindex="-1" autocomplete="off">
                 <div class="form-row">
                     <div class="form-group">
                         <label for="prenom" data-i18n="form.prenom.label">Prénom</label>
@@ -1051,6 +1055,7 @@
                     <textarea id="message" name="Message" data-i18n-placeholder="form.message.placeholder" placeholder="Votre message, questions particulières…"></textarea>
                 </div>
                 <button type="submit" class="btn-submit" data-i18n="form.submit">Envoyer ma demande</button>
+                <p id="form-result" style="display:none;margin:6px 0 0;font-size:0.9rem;font-weight:600"></p>
             </form>
         </div>
     </div>
@@ -1155,6 +1160,8 @@
             'form.voyageurs.opt4': '7 – 8 personnes',
             'form.message.label': 'Message', 'form.message.placeholder': 'Votre message, questions particulières…',
             'form.submit': 'Envoyer ma demande',
+            'form.success': 'Merci ! Votre demande a bien été envoyée. Nous vous répondrons rapidement.',
+            'form.error': "Une erreur s'est produite. Merci de réessayer ou de nous écrire directement.",
             'footer.tagline': 'Goult\u00a0·\u00a0Luberon\u00a0·\u00a0Provence',
             'footer.copy': '© 2026 Le Mazet des Vaines\u00a0·\u00a0',
             'footer.legal': 'Mentions légales',
@@ -1223,6 +1230,8 @@
             'form.voyageurs.opt4': '7 – 8 guests',
             'form.message.label': 'Message', 'form.message.placeholder': 'Your message, special requests…',
             'form.submit': 'Send my request',
+            'form.success': "Thank you! Your request has been sent. We'll get back to you shortly.",
+            'form.error': 'Something went wrong. Please try again or email us directly.',
             'footer.tagline': 'Goult\u00a0·\u00a0Luberon\u00a0·\u00a0Provence',
             'footer.copy': '© 2026 Le Mazet des Vaines\u00a0·\u00a0',
             'footer.legal': 'Legal notices',
@@ -1290,6 +1299,8 @@
             'form.voyageurs.opt4': '7 – 8 personas',
             'form.message.label': 'Mensaje', 'form.message.placeholder': 'Su mensaje, peticiones especiales…',
             'form.submit': 'Enviar mi solicitud',
+            'form.success': '¡Gracias! Tu solicitud se ha enviado. Te responderemos en breve.',
+            'form.error': 'Se ha producido un error. Inténtalo de nuevo o escríbenos directamente.',
             'footer.tagline': 'Goult\u00a0·\u00a0Luberon\u00a0·\u00a0Provenza',
             'footer.copy': '© 2026 Le Mazet des Vaines\u00a0·\u00a0',
             'footer.legal': 'Aviso legal',
@@ -1357,6 +1368,8 @@
             'form.voyageurs.opt4': '7 – 8 Personen',
             'form.message.label': 'Nachricht', 'form.message.placeholder': 'Ihre Nachricht, besondere Wünsche…',
             'form.submit': 'Anfrage senden',
+            'form.success': 'Danke! Ihre Anfrage wurde gesendet. Wir melden uns in Kürze.',
+            'form.error': 'Es ist ein Fehler aufgetreten. Bitte versuchen Sie es erneut oder schreiben Sie uns direkt.',
             'footer.tagline': 'Goult\u00a0·\u00a0Luberon\u00a0·\u00a0Provence',
             'footer.copy': '© 2026 Le Mazet des Vaines\u00a0·\u00a0',
             'footer.legal': 'Impressum & Datenschutz',
@@ -1424,6 +1437,8 @@
             'form.voyageurs.opt4': '7 – 8 personen',
             'form.message.label': 'Bericht', 'form.message.placeholder': 'Uw bericht, speciale verzoeken…',
             'form.submit': 'Aanvraag versturen',
+            'form.success': 'Bedankt! Uw aanvraag is verzonden. We nemen spoedig contact op.',
+            'form.error': 'Er is iets misgegaan. Probeer het opnieuw of mail ons rechtstreeks.',
             'footer.tagline': 'Goult\u00a0·\u00a0Luberon\u00a0·\u00a0Provence',
             'footer.copy': '© 2026 Le Mazet des Vaines\u00a0·\u00a0',
             'footer.legal': 'Juridische informatie',
@@ -1491,6 +1506,8 @@
             'form.voyageurs.opt4': '7 – 8 persone',
             'form.message.label': 'Messaggio', 'form.message.placeholder': 'Il vostro messaggio, richieste speciali…',
             'form.submit': 'Invia la mia richiesta',
+            'form.success': 'Grazie! La tua richiesta è stata inviata. Ti risponderemo a breve.',
+            'form.error': 'Si è verificato un errore. Riprova o scrivici direttamente.',
             'footer.tagline': 'Goult\u00a0·\u00a0Luberon\u00a0·\u00a0Provenza',
             'footer.copy': '© 2026 Le Mazet des Vaines\u00a0·\u00a0',
             'footer.legal': 'Note legali',
@@ -1558,6 +1575,8 @@
             'form.voyageurs.opt4': '7〜8名',
             'form.message.label': 'メッセージ', 'form.message.placeholder': 'ご要望、特別なリクエストなど…',
             'form.submit': 'リクエストを送る',
+            'form.success': 'ありがとうございます！リクエストを送信しました。折り返しご連絡いたします。',
+            'form.error': 'エラーが発生しました。もう一度お試しいただくか、直接メールをお送りください。',
             'footer.tagline': 'ゴール\u00a0·\u00a0ルベロン\u00a0·\u00a0プロヴァンス',
             'footer.copy': '© 2026 Le Mazet des Vaines\u00a0·\u00a0',
             'footer.legal': '法的情報',
@@ -1625,6 +1644,8 @@
             'form.voyageurs.opt4': '7 – 8 pessoas',
             'form.message.label': 'Mensagem', 'form.message.placeholder': 'A sua mensagem, pedidos especiais…',
             'form.submit': 'Enviar o meu pedido',
+            'form.success': 'Obrigado! O seu pedido foi enviado. Responderemos em breve.',
+            'form.error': 'Ocorreu um erro. Tente novamente ou escreva-nos diretamente.',
             'footer.tagline': 'Goult\u00a0·\u00a0Luberon\u00a0·\u00a0Provença',
             'footer.copy': '© 2026 Le Mazet des Vaines\u00a0·\u00a0',
             'footer.legal': 'Avisos legais',
@@ -1740,6 +1761,50 @@
     document.getElementById('arrivee').addEventListener('change', function() {
         document.getElementById('depart').min = this.value;
     });
+
+    /* ── Envoi du formulaire de réservation (Web3Forms) ── */
+    (function() {
+        const form = document.getElementById('reservation-form');
+        if (!form) return;
+        const result = document.getElementById('form-result');
+        const btn = form.querySelector('.btn-submit');
+        const sendingTxt = { fr:'Envoi…', en:'Sending…', es:'Enviando…', de:'Senden…', nl:'Versturen…', it:'Invio…', ja:'送信中…', pt:'A enviar…' };
+
+        form.addEventListener('submit', function(e) {
+            e.preventDefault();
+            const lang = (typeof currentLang !== 'undefined') ? currentLang : 'fr';
+            const data = Object.fromEntries(new FormData(form));
+            result.style.display = 'none';
+            btn.disabled = true;
+            const original = btn.textContent;
+            btn.textContent = sendingTxt[lang] || sendingTxt.fr;
+
+            fetch('https://api.web3forms.com/submit', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+                body: JSON.stringify(data)
+            })
+            .then(r => r.json())
+            .then(json => {
+                const ok = json.success;
+                const key = ok ? 'form.success' : 'form.error';
+                const fallback = ok
+                    ? 'Merci ! Votre demande a bien été envoyée. Nous vous répondrons rapidement.'
+                    : "Une erreur s'est produite. Merci de réessayer ou de nous écrire directement.";
+                result.textContent = (i18n[lang] && i18n[lang][key]) ? i18n[lang][key] : fallback;
+                result.style.color = ok ? '#2e7d32' : '#c0392b';
+                result.style.display = 'block';
+                if (ok) form.reset();
+            })
+            .catch(() => {
+                result.textContent = (i18n[lang] && i18n[lang]['form.error']) ? i18n[lang]['form.error']
+                    : "Une erreur s'est produite. Merci de réessayer ou de nous écrire directement.";
+                result.style.color = '#c0392b';
+                result.style.display = 'block';
+            })
+            .finally(() => { btn.disabled = false; btn.textContent = original; });
+        });
+    })();
 </script>
 
 </body>

@@ -111,10 +111,11 @@
             position: fixed;
             top: 0; left: 0; right: 0;
             z-index: 100;
-            padding: 24px 48px;
+            padding: 22px 48px;
             display: flex;
             justify-content: space-between;
             align-items: center;
+            gap: 44px;
             transition: all 0.35s ease;
         }
 
@@ -131,17 +132,23 @@
             text-decoration: none;
             letter-spacing: 0.5px;
             flex-shrink: 0;
+            display: flex;
+            align-items: center;
+            gap: 12px;
         }
+
+        .nav-logo-mark { width: 34px; height: 34px; flex-shrink: 0; }
+        .nav-logo span { white-space: nowrap; }
 
         .nav-right {
             display: flex;
             align-items: center;
-            gap: 32px;
+            gap: 24px;
         }
 
         .nav-links {
             display: flex;
-            gap: 28px;
+            gap: 19px;
             list-style: none;
         }
 
@@ -149,7 +156,7 @@
             color: rgba(255,255,255,0.82);
             text-decoration: none;
             font-size: 0.78rem;
-            letter-spacing: 1.5px;
+            letter-spacing: 1px;
             text-transform: uppercase;
             transition: color 0.2s;
             white-space: nowrap;
@@ -783,7 +790,7 @@
 
 <!-- ══ NAVIGATION ════════════════════════════════════════════════ -->
 <nav id="navbar">
-    <a href="#" class="nav-logo">Le Mazet des Vaines</a>
+    <a href="#" class="nav-logo"><img src="nav-logo.png" alt="" class="nav-logo-mark"><span>Le Mazet des Vaines</span></a>
     <div class="nav-right">
         <ul class="nav-links">
             <li><a href="#logement"    data-i18n="nav.logement">Le logement</a></li>

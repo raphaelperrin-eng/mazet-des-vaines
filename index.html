@@ -782,6 +782,7 @@
             <li><a href="#equipements" data-i18n="nav.equipements">Équipements</a></li>
             <li><a href="#tarifs"      data-i18n="nav.tarifs">Tarifs</a></li>
             <li><a href="#localisation" data-i18n="nav.localisation">Localisation</a></li>
+            <li><a href="#disponibilites" id="nav-dispos">Disponibilités</a></li>
             <li><a href="#contact" class="nav-cta" data-i18n="nav.reserver">Réserver</a></li>
             <li><a href="recommandations.html" data-i18n="nav.recommandations">Recommandations</a></li>
             <li><a href="actualites.html" data-i18n="nav.actualites">Actualités</a></li>
@@ -982,6 +983,55 @@
             <div class="rule"><span class="rule-icon">👥</span><div class="rule-label" data-i18n="rule.capacity.label">Capacité</div><div class="rule-value" data-i18n="rule.capacity.value">8 voyageurs maximum</div></div>
             <div class="rule"><span class="rule-icon">🐾</span><div class="rule-label" data-i18n="rule.pets.label">Animaux</div><div class="rule-value" data-i18n="rule.pets.value">Acceptés sur demande</div></div>
             <div class="rule"><span class="rule-icon">🚭</span><div class="rule-label" data-i18n="rule.smoking.label">Tabac</div><div class="rule-value" data-i18n="rule.smoking.value">Non-fumeur (intérieur)</div></div>
+        </div>
+    </div>
+</section>
+
+<!-- ══ DISPONIBILITÉS ═════════════════════════════════════════════ -->
+<style>
+    #disponibilites { background: var(--cream, #FDFAF5); }
+    .dispo-inner { max-width: 1000px; margin: 0 auto; padding: 0 24px; }
+    .dispo-head { text-align: center; margin-bottom: 22px; }
+    .dispo-sub { color: var(--mid, #5A544A); font-size: 0.9rem; max-width: 560px; margin: 10px auto 0; }
+    .dispo-legend { display: flex; gap: 24px; justify-content: center; margin: 16px 0 26px; font-size: 0.85rem; color: var(--mid, #5A544A); }
+    .dispo-legend .dot { display: inline-block; width: 12px; height: 12px; border-radius: 3px; margin-right: 7px; vertical-align: middle; }
+    .dot-free { background: #fff; border: 1px solid var(--stone, #C9C2B4); }
+    .dot-busy { background: var(--stone, #C9C2B4); }
+    .dispo-navbar { display: flex; align-items: flex-start; justify-content: center; gap: 10px; }
+    .dispo-arrow { background: #fff; border: 1px solid var(--stone, #C9C2B4); color: var(--dark, #1C1A17); width: 38px; height: 38px; border-radius: 50%; cursor: pointer; font-size: 1.2rem; line-height: 1; flex: none; }
+    .dispo-arrow:disabled { opacity: 0.3; cursor: default; }
+    .dispo-months { display: flex; gap: 36px; flex-wrap: wrap; justify-content: center; }
+    .dispo-month { width: 300px; }
+    .dispo-month-title { text-align: center; font-family: 'Playfair Display', serif; font-size: 1.1rem; margin-bottom: 12px; color: var(--dark, #1C1A17); text-transform: capitalize; }
+    .dispo-grid { display: grid; grid-template-columns: repeat(7, 1fr); gap: 4px; }
+    .dispo-wd { text-align: center; font-size: 0.68rem; color: var(--mid, #5A544A); padding: 4px 0; text-transform: uppercase; letter-spacing: 0.5px; }
+    .dispo-day { aspect-ratio: 1 / 1; display: flex; align-items: center; justify-content: center; font-size: 0.85rem; border-radius: 6px; color: var(--dark, #1C1A17); }
+    .dispo-day.empty { visibility: hidden; }
+    .dispo-day.past { color: #cfc9bd; text-decoration: line-through; }
+    .dispo-day.free { background: #fff; border: 1px solid #ece7dd; }
+    .dispo-day.busy { background: var(--stone, #C9C2B4); color: #fff; }
+    .dispo-updated { text-align: center; font-size: 0.75rem; color: var(--mid, #5A544A); margin-top: 18px; }
+    @media (max-width: 680px) { .dispo-month { width: 280px; } .dispo-months { gap: 24px; } }
+</style>
+<section id="disponibilites">
+    <div class="dispo-inner">
+        <div class="dispo-head">
+            <span class="section-tag" id="dispo-tag">Disponibilités</span>
+            <h2 class="section-title" id="dispo-title">Calendrier des disponibilités</h2>
+            <p class="dispo-sub" id="dispo-sub">Dates à jour depuis nos plateformes. Pour réserver en direct, envoyez-nous une demande.</p>
+        </div>
+        <div class="dispo-legend">
+            <span><i class="dot dot-free"></i><span id="dispo-free">Libre</span></span>
+            <span><i class="dot dot-busy"></i><span id="dispo-busy">Occupé</span></span>
+        </div>
+        <div class="dispo-navbar">
+            <button type="button" id="dispo-prev" class="dispo-arrow" aria-label="Mois précédent">‹</button>
+            <div id="dispo-months" class="dispo-months"></div>
+            <button type="button" id="dispo-next" class="dispo-arrow" aria-label="Mois suivant">›</button>
+        </div>
+        <p id="dispo-updated" class="dispo-updated"></p>
+        <div style="text-align:center;margin-top:24px">
+            <a href="#contact" class="btn" id="dispo-cta">Demander ces dates</a>
         </div>
     </div>
 </section>
@@ -1805,6 +1855,75 @@
             .finally(() => { btn.disabled = false; btn.textContent = original; });
         });
     })();
+</script>
+
+<script>
+/* ── Calendrier de disponibilités (lit availability.json, multilingue) ── */
+(function() {
+    const T = {
+        fr: { nav:'Disponibilités', tag:'Disponibilités', title:'Calendrier des disponibilités', sub:"Dates à jour depuis nos plateformes. Pour réserver en direct, envoyez-nous une demande.", free:'Libre', busy:'Occupé', cta:'Demander ces dates', updated:'Mis à jour le' },
+        en: { nav:'Availability', tag:'Availability', title:'Availability calendar', sub:'Dates synced from our platforms. To book directly, send us a request.', free:'Available', busy:'Booked', cta:'Request these dates', updated:'Updated on' },
+        es: { nav:'Disponibilidad', tag:'Disponibilidad', title:'Calendario de disponibilidad', sub:'Fechas actualizadas desde nuestras plataformas. Para reservar directamente, envíanos una solicitud.', free:'Libre', busy:'Ocupado', cta:'Solicitar estas fechas', updated:'Actualizado el' },
+        de: { nav:'Verfügbarkeit', tag:'Verfügbarkeit', title:'Verfügbarkeitskalender', sub:'Termine aktuell von unseren Plattformen. Für eine Direktbuchung senden Sie uns eine Anfrage.', free:'Frei', busy:'Belegt', cta:'Diese Termine anfragen', updated:'Aktualisiert am' },
+        nl: { nav:'Beschikbaarheid', tag:'Beschikbaarheid', title:'Beschikbaarheidskalender', sub:'Data bijgewerkt vanaf onze platforms. Stuur ons een aanvraag om direct te boeken.', free:'Vrij', busy:'Bezet', cta:'Deze data aanvragen', updated:'Bijgewerkt op' },
+        it: { nav:'Disponibilità', tag:'Disponibilità', title:'Calendario delle disponibilità', sub:'Date aggiornate dalle nostre piattaforme. Per prenotare in diretta, inviaci una richiesta.', free:'Libero', busy:'Occupato', cta:'Richiedi queste date', updated:'Aggiornato il' },
+        ja: { nav:'空室状況', tag:'空室状況', title:'空室カレンダー', sub:'各予約サイトと連携した最新の空室状況です。直接予約はお問い合わせください。', free:'空き', busy:'予約済', cta:'この日程を問い合わせる', updated:'更新日' },
+        pt: { nav:'Disponibilidade', tag:'Disponibilidade', title:'Calendário de disponibilidade', sub:'Datas atualizadas a partir das nossas plataformas. Para reservar diretamente, envie-nos um pedido.', free:'Livre', busy:'Ocupado', cta:'Solicitar estas datas', updated:'Atualizado em' }
+    };
+    const el = (id) => document.getElementById(id);
+    if (!el('dispo-months')) return;
+    let booked = new Set(), updatedISO = null;
+    const today = new Date(); today.setHours(0,0,0,0);
+    const minMonth = new Date(today.getFullYear(), today.getMonth(), 1);
+    let view = new Date(minMonth);
+
+    const L = () => (typeof currentLang !== 'undefined' && T[currentLang]) ? currentLang : 'fr';
+    const iso = (d) => { const x = new Date(d.getTime() - d.getTimezoneOffset()*60000); return x.toISOString().slice(0,10); };
+
+    function monthGrid(year, month) {
+        const lang = L();
+        const first = new Date(year, month, 1);
+        const offset = (first.getDay() + 6) % 7;
+        const days = new Date(year, month + 1, 0).getDate();
+        let html = '<div class="dispo-month"><div class="dispo-month-title">' +
+            first.toLocaleDateString(lang, { month:'long', year:'numeric' }) + '</div><div class="dispo-grid">';
+        for (let i = 0; i < 7; i++) {
+            html += '<div class="dispo-wd">' + new Date(2024,0,1+i).toLocaleDateString(lang,{weekday:'short'}) + '</div>';
+        }
+        for (let i = 0; i < offset; i++) html += '<div class="dispo-day empty"></div>';
+        for (let d = 1; d <= days; d++) {
+            const date = new Date(year, month, d); date.setHours(0,0,0,0);
+            let cls = 'free';
+            if (date < today) cls = 'past';
+            else if (booked.has(iso(date))) cls = 'busy';
+            html += '<div class="dispo-day ' + cls + '">' + d + '</div>';
+        }
+        return html + '</div></div>';
+    }
+    function render() {
+        const y = view.getFullYear(), m = view.getMonth();
+        el('dispo-months').innerHTML = monthGrid(y, m) + monthGrid(y, m + 1);
+        el('dispo-prev').disabled = (view <= minMonth);
+        if (updatedISO) el('dispo-updated').textContent = T[L()].updated + ' ' + new Date(updatedISO).toLocaleDateString(L());
+    }
+    function applyLang() {
+        const t = T[L()];
+        const set = (id, v) => { const e = el(id); if (e) e.textContent = v; };
+        set('dispo-tag', t.tag); set('dispo-title', t.title); set('dispo-sub', t.sub);
+        set('dispo-free', t.free); set('dispo-busy', t.busy); set('dispo-cta', t.cta);
+        set('nav-dispos', t.nav);
+        render();
+    }
+    el('dispo-prev').addEventListener('click', () => { view.setMonth(view.getMonth()-1); render(); });
+    el('dispo-next').addEventListener('click', () => { view.setMonth(view.getMonth()+1); render(); });
+    const sel = document.querySelector('.lang-select');
+    if (sel) sel.addEventListener('change', applyLang);
+
+    fetch('availability.json', { cache: 'no-store' })
+        .then(r => r.json())
+        .then(d => { booked = new Set(d.bookedDates || []); updatedISO = (d.updated && d.updated !== '(initial)') ? d.updated : null; applyLang(); })
+        .catch(() => applyLang());
+})();
 </script>
 
 </body>

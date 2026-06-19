@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Livre d'or – Le Mazet des Vaines</title>
+<meta name="robots" content="noindex">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+<style>
+    :root { --gold:#B8965A; --terra:#A8552A; --cream:#FDFAF5; --dark:#1C1A17; --mid:#5A544A; --stone:#C9C2B4; --light:#F0EAE0; }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: 'Lato', sans-serif; background: var(--cream); color: var(--dark); line-height: 1.6; padding: 32px 18px 60px; }
+    .wrap { max-width: 560px; margin: 0 auto; }
+    .lang { text-align: right; margin-bottom: 18px; }
+    .lang button { background: none; border: none; font-family: 'Lato',sans-serif; font-size: 0.85rem; color: var(--mid); cursor: pointer; padding: 4px 8px; letter-spacing: 1px; }
+    .lang button.active { color: var(--dark); font-weight: 700; border-bottom: 2px solid var(--gold); }
+    .tag { display: inline-block; font-size: 0.72rem; letter-spacing: 3px; text-transform: uppercase; color: var(--gold); margin-bottom: 10px; }
+    h1 { font-family: 'Playfair Display', serif; font-size: 1.9rem; font-weight: 600; line-height: 1.2; margin-bottom: 14px; }
+    .intro { color: var(--mid); margin-bottom: 30px; }
+    .card { background: #fff; border: 1px solid #ece7dd; border-radius: 12px; padding: 26px; margin-bottom: 22px; }
+    .card h2 { font-family: 'Playfair Display', serif; font-size: 1.2rem; font-weight: 600; margin-bottom: 8px; }
+    .card p.sub { color: var(--mid); font-size: 0.9rem; margin-bottom: 18px; }
+    .btn-google { display: flex; align-items: center; justify-content: center; gap: 10px; width: 100%; background: var(--gold); color: #fff; text-decoration: none; padding: 15px; border-radius: 8px; font-weight: 700; font-size: 1rem; transition: background .2s; }
+    .btn-google:hover { background: var(--terra); }
+    label { display: block; font-size: 0.85rem; font-weight: 700; margin-bottom: 6px; }
+    input, textarea { width: 100%; padding: 11px 13px; border: 1px solid var(--stone); border-radius: 7px; font-family: 'Lato',sans-serif; font-size: 0.95rem; margin-bottom: 16px; background: #fff; color: var(--dark); }
+    textarea { min-height: 110px; resize: vertical; }
+    .stars-input { display: flex; flex-direction: row-reverse; justify-content: flex-end; gap: 4px; margin-bottom: 18px; }
+    .stars-input input { display: none; }
+    .stars-input label { font-size: 1.8rem; color: var(--stone); cursor: pointer; margin: 0; width: auto; }
+    .stars-input input:checked ~ label,
+    .stars-input label:hover, .stars-input label:hover ~ label { color: var(--gold); }
+    .btn-submit { width: 100%; background: var(--dark); color: #fff; border: none; padding: 15px; border-radius: 8px; font-family: 'Lato',sans-serif; font-weight: 700; font-size: 1rem; cursor: pointer; }
+    .btn-submit:hover { background: var(--terra); }
+    .result { display: none; margin-top: 14px; font-weight: 700; text-align: center; }
+    .foot { text-align: center; margin-top: 20px; font-size: 0.8rem; color: var(--mid); }
+    .foot a { color: var(--gold); text-decoration: none; }
+</style>
+</head>
+<body>
+<div class="wrap">
+    <div class="lang">
+        <button id="btn-fr" class="active" onclick="setLang('fr')">FR</button>
+        <button id="btn-en" onclick="setLang('en')">EN</button>
+    </div>
+
+    <span class="tag" data-t="tag">Livre d'or</span>
+    <h1 data-t="title">Merci pour votre séjour au Mazet des Vaines</h1>
+    <p class="intro" data-t="intro">Nous espérons que vous avez passé un merveilleux moment en Provence. Votre avis nous touche et aide d'autres voyageurs à découvrir la maison.</p>
+
+    <div class="card">
+        <h2 data-t="g_title">Laissez-nous un avis sur Google</h2>
+        <p class="sub" data-t="g_sub">Le plus utile pour nous — ça ne prend qu'une minute.</p>
+        <a class="btn-google" id="google-link" href="https://www.google.com/maps/search/?api=1&query=Le+Mazet+des+Vaines+Goult" target="_blank" rel="noopener">
+            <span>★</span><span data-t="g_btn">Donner mon avis sur Google</span>
+        </a>
+    </div>
+
+    <div class="card">
+        <h2 data-t="f_title">Ou écrivez-nous un mot</h2>
+        <p class="sub" data-t="f_sub">Votre message nous arrive directement. Avec votre accord, nous pourrons le partager sur notre site.</p>
+        <form id="avis-form">
+            <input type="hidden" name="access_key" value="4e5c2f87-85fd-4a4a-93f6-979aea5a411e">
+            <input type="hidden" name="subject" value="Nouvel avis – Livre d'or Le Mazet des Vaines">
+            <input type="hidden" name="from_name" value="Livre d'or – Le Mazet des Vaines">
+            <input type="checkbox" name="botcheck" style="display:none" tabindex="-1" autocomplete="off">
+
+            <label for="prenom" data-t="l_name">Votre prénom</label>
+            <input type="text" id="prenom" name="Prenom" required>
+
+            <label for="ville" data-t="l_city">Ville / Pays (facultatif)</label>
+            <input type="text" id="ville" name="Ville">
+
+            <label data-t="l_note">Votre note</label>
+            <div class="stars-input">
+                <input type="radio" id="s5" name="Note" value="5 étoiles" checked><label for="s5">★</label>
+                <input type="radio" id="s4" name="Note" value="4 étoiles"><label for="s4">★</label>
+                <input type="radio" id="s3" name="Note" value="3 étoiles"><label for="s3">★</label>
+                <input type="radio" id="s2" name="Note" value="2 étoiles"><label for="s2">★</label>
+                <input type="radio" id="s1" name="Note" value="1 étoile"><label for="s1">★</label>
+            </div>
+
+            <label for="message" data-t="l_msg">Votre message</label>
+            <textarea id="message" name="Message" required></textarea>
+
+            <button type="submit" class="btn-submit" data-t="submit">Envoyer mon avis</button>
+            <p class="result" id="result"></p>
+        </form>
+    </div>
+
+    <p class="foot"><a href="https://www.lemazetdesvaines.com" data-t="back">← Retour au site lemazetdesvaines.com</a></p>
+</div>
+
+<script>
+    const STR = {
+        fr: { tag:"Livre d'or", title:"Merci pour votre séjour au Mazet des Vaines", intro:"Nous espérons que vous avez passé un merveilleux moment en Provence. Votre avis nous touche et aide d'autres voyageurs à découvrir la maison.", g_title:"Laissez-nous un avis sur Google", g_sub:"Le plus utile pour nous — ça ne prend qu'une minute.", g_btn:"Donner mon avis sur Google", f_title:"Ou écrivez-nous un mot", f_sub:"Votre message nous arrive directement. Avec votre accord, nous pourrons le partager sur notre site.", l_name:"Votre prénom", l_city:"Ville / Pays (facultatif)", l_note:"Votre note", l_msg:"Votre message", submit:"Envoyer mon avis", back:"← Retour au site lemazetdesvaines.com", sending:"Envoi…", ok:"Merci beaucoup pour votre avis ! 💛", err:"Une erreur s'est produite. Merci de réessayer." },
+        en: { tag:"Guestbook", title:"Thank you for staying at Le Mazet des Vaines", intro:"We hope you had a wonderful time in Provence. Your feedback means a lot and helps other travellers discover the house.", g_title:"Leave us a review on Google", g_sub:"The most helpful for us — it only takes a minute.", g_btn:"Write my Google review", f_title:"Or drop us a few words", f_sub:"Your message comes straight to us. With your consent, we may share it on our website.", l_name:"Your first name", l_city:"City / Country (optional)", l_note:"Your rating", l_msg:"Your message", submit:"Send my review", back:"← Back to lemazetdesvaines.com", sending:"Sending…", ok:"Thank you so much for your review! 💛", err:"Something went wrong. Please try again." }
+    };
+    let lang = 'fr';
+    function setLang(l) {
+        lang = l;
+        document.documentElement.lang = l;
+        document.getElementById('btn-fr').classList.toggle('active', l==='fr');
+        document.getElementById('btn-en').classList.toggle('active', l==='en');
+        document.querySelectorAll('[data-t]').forEach(el => { const k = el.dataset.t; if (STR[l][k]) el.textContent = STR[l][k]; });
+    }
+
+    const form = document.getElementById('avis-form');
+    const result = document.getElementById('result');
+    form.addEventListener('submit', function(e) {
+        e.preventDefault();
+        const btn = form.querySelector('.btn-submit');
+        const original = btn.textContent;
+        btn.disabled = true; btn.textContent = STR[lang].sending; result.style.display = 'none';
+        fetch('https://api.web3forms.com/submit', {
+            method: 'POST', headers: { 'Content-Type':'application/json', 'Accept':'application/json' },
+            body: JSON.stringify(Object.fromEntries(new FormData(form)))
+        }).then(r => r.json()).then(j => {
+            result.textContent = j.success ? STR[lang].ok : STR[lang].err;
+            result.style.color = j.success ? '#2e7d32' : '#c0392b';
+            result.style.display = 'block';
+            if (j.success) form.reset();
+        }).catch(() => {
+            result.textContent = STR[lang].err; result.style.color = '#c0392b'; result.style.display = 'block';
+        }).finally(() => { btn.disabled = false; btn.textContent = original; });
+    });
+</script>
+</body>
+</html>

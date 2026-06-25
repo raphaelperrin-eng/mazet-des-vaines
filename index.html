@@ -2009,10 +2009,10 @@
     const sel = document.querySelector('.lang-select');
     if (sel) sel.addEventListener('change', applyLang);
 
-    fetch('availability.json', { cache: 'no-store' })
-        .then(r => r.json())
-        .then(d => { booked = new Set(d.bookedDates || []); updatedISO = (d.updated && d.updated !== '(initial)') ? d.updated : null; applyLang(); })
-        .catch(() => applyLang());
+    function useData(d) { booked = new Set(d.bookedDates || []); updatedISO = (d.updated && d.updated !== '(initial)') ? d.updated : null; applyLang(); }
+    fetch('https://raw.githubusercontent.com/raphaelperrin-eng/mazet-des-vaines/main/availability.json', { cache: 'no-store' })
+        .then(r => r.json()).then(useData)
+        .catch(() => fetch('availability.json', { cache: 'no-store' }).then(r => r.json()).then(useData).catch(() => applyLang()));
 })();
 </script>
 

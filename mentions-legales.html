@@ -140,7 +140,7 @@
 
 <!-- NAV -->
 <nav>
-    <a href="index.html" class="nav-logo">Le Mazet des Vaines</a>
+    <a href="index.html" class="nav-logo"><img src="nav-logo.png" alt="" class="nav-logo-mark"><span>Le Mazet des Vaines</span></a>
     <a href="index.html" class="nav-back" data-i18n="back">← Retour au site</a>
     <div class="lang-toggle">
         <button class="lang-btn active" onclick="setLang('fr')">FR</button>
@@ -387,7 +387,9 @@
 body{ font-family:'Metropolis','Jost',Arial,sans-serif; font-weight:300; letter-spacing:.2px; }
 .nav-logo, .page-hero h1, .section-title, .article-title, .footer-logo, .form-title, h1, h2{ font-family:'Metropolis','Jost',Arial,sans-serif !important; }
 .page-hero h1, .section-title, .article-title, .footer-logo, .form-title{ text-transform:uppercase; font-weight:200; letter-spacing:2.5px; }
-.nav-logo span{ text-transform:uppercase; font-weight:400; letter-spacing:3px; font-size:1rem; }
+.nav-logo span{ text-transform:uppercase; font-weight:400; letter-spacing:3px; font-size:1rem; white-space:nowrap; }
+.nav-logo{ display:flex; align-items:center; gap:10px; }
+.nav-logo-mark{ width:46px; height:46px; flex-shrink:0; }
 .btn, .btn-outline, .btn-submit, .airbnb-link{ border-radius:0 !important; text-transform:uppercase; letter-spacing:2px; font-weight:400; }
 input, textarea, select, .lang-select, .card, .reco-card, .article-card, img.rounded, .map-embed{ border-radius:0 !important; }
 .nav-links a{ letter-spacing:2px; }

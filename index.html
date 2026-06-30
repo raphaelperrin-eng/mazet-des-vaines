@@ -1061,6 +1061,69 @@
     #artdevivre .mag-card p{ color:var(--mid); font-size:.92rem; line-height:1.7; }
     @media(max-width:760px){ #artdevivre .mag-grid{ grid-template-columns:1fr; gap:34px; } }
 </style>
+<!-- ══ DÉCOUVRIR LE LUBERON (photos région) ═══════════════════════ -->
+<section id="decouvrir">
+    <style>
+    #decouvrir{ background:var(--cream); }
+    #decouvrir .dec-head{ text-align:center; max-width:760px; margin:0 auto 46px; }
+    #decouvrir .dec-grid{ display:grid; grid-template-columns:repeat(4,1fr); gap:18px; }
+    #decouvrir .dec-card{ position:relative; overflow:hidden; }
+    #decouvrir .dec-card img{ width:100%; height:300px; object-fit:cover; display:block; transition:transform .6s ease; }
+    #decouvrir .dec-card:hover img{ transform:scale(1.06); }
+    #decouvrir .dec-cap{ position:absolute; left:0; right:0; bottom:0; padding:24px 18px 16px; background:linear-gradient(transparent, rgba(20,18,14,.74)); color:#fff; }
+    #decouvrir .dec-cap .n{ display:block; text-transform:uppercase; letter-spacing:2.5px; font-weight:300; font-size:.98rem; }
+    #decouvrir .dec-cap .s{ display:block; font-size:.74rem; letter-spacing:1px; opacity:.86; margin-top:4px; }
+    @media(max-width:960px){ #decouvrir .dec-grid{ grid-template-columns:repeat(2,1fr); } }
+    @media(max-width:480px){ #decouvrir .dec-grid{ grid-template-columns:1fr; } #decouvrir .dec-card img{ height:240px; } }
+    </style>
+    <div class="dec-head">
+        <span class="section-tag" id="dec-tag">À quelques minutes de la maison</span>
+        <h2 class="section-title" id="dec-title">Découvrir le Luberon</h2>
+    </div>
+    <div class="dec-grid">
+        <div class="dec-card">
+            <img src="https://images.unsplash.com/photo-1673423050661-134515109330?w=900&q=70&auto=format&fit=crop" alt="Gordes, village perché du Luberon" loading="lazy" width="900" height="600">
+            <div class="dec-cap"><span class="n">Gordes</span><span class="s" id="dec-s1">Village perché</span></div>
+        </div>
+        <div class="dec-card">
+            <img src="https://images.unsplash.com/photo-1653934049994-1b492c064d94?w=900&q=70&auto=format&fit=crop" alt="Roussillon, le village ocre" loading="lazy" width="900" height="600">
+            <div class="dec-cap"><span class="n">Roussillon</span><span class="s" id="dec-s2">Le village ocre</span></div>
+        </div>
+        <div class="dec-card">
+            <img src="https://images.unsplash.com/photo-1662486717731-293f2b6ebfa2?w=900&q=70&auto=format&fit=crop" alt="Champs de lavande en Provence" loading="lazy" width="900" height="600">
+            <div class="dec-cap"><span class="n" id="dec-n3">Champs de lavande</span><span class="s" id="dec-s3">L'été en Provence</span></div>
+        </div>
+        <div class="dec-card">
+            <img src="https://images.unsplash.com/photo-1760915170446-9c5b0b67b6e2?w=900&q=70&auto=format&fit=crop" alt="Art de vivre provençal, apéro au soleil" loading="lazy" width="900" height="600">
+            <div class="dec-cap"><span class="n" id="dec-n4">Art de vivre</span><span class="s" id="dec-s4">Apéro au soleil</span></div>
+        </div>
+    </div>
+</section>
+<script>
+(function(){
+    const T={
+        fr:{tag:'À quelques minutes de la maison',title:'Découvrir le Luberon',n3:'Champs de lavande',n4:'Art de vivre',s1:'Village perché',s2:'Le village ocre',s3:"L'été en Provence",s4:'Apéro au soleil'},
+        en:{tag:'Minutes from the house',title:'Discover the Luberon',n3:'Lavender fields',n4:'Art of living',s1:'Hilltop village',s2:'The ochre village',s3:'Summer in Provence',s4:'Drinks in the sun'},
+        es:{tag:'A pocos minutos de la casa',title:'Descubrir el Luberon',n3:'Campos de lavanda',n4:'Arte de vivir',s1:'Pueblo encaramado',s2:'El pueblo ocre',s3:'El verano en Provenza',s4:'Aperitivo al sol'},
+        de:{tag:'Wenige Minuten vom Haus',title:'Den Luberon entdecken',n3:'Lavendelfelder',n4:'Lebensart',s1:'Bergdorf',s2:'Das Ockerdorf',s3:'Sommer in der Provence',s4:'Aperitif in der Sonne'},
+        nl:{tag:'Op enkele minuten van het huis',title:'Ontdek de Luberon',n3:'Lavendelvelden',n4:'Levenskunst',s1:'Bergdorp',s2:'Het okerdorp',s3:'Zomer in de Provence',s4:'Borrel in de zon'},
+        it:{tag:'A pochi minuti dalla casa',title:'Scoprire il Luberon',n3:'Campi di lavanda',n4:'Arte di vivere',s1:'Borgo arroccato',s2:"Il borgo d'ocra",s3:"L'estate in Provenza",s4:'Aperitivo al sole'},
+        ja:{tag:'家から数分',title:'リュベロンを巡る',n3:'ラベンダー畑',n4:'暮らしの楽しみ',s1:'丘上の村',s2:'赤土の村',s3:'プロヴァンスの夏',s4:'陽だまりのアペロ'},
+        pt:{tag:'A poucos minutos da casa',title:'Descobrir o Luberon',n3:'Campos de lavanda',n4:'Arte de viver',s1:'Aldeia no alto',s2:'A aldeia de ocre',s3:'O verão na Provença',s4:'Aperitivo ao sol'}
+    };
+    const el=id=>document.getElementById(id);
+    if(!el('dec-title'))return;
+    function apply(){
+        const lang=(typeof currentLang!=='undefined'&&T[currentLang])?currentLang:'fr'; const t=T[lang];
+        const s=(id,v)=>{const e=el(id);if(e)e.textContent=v;};
+        s('dec-tag',t.tag);s('dec-title',t.title);s('dec-n3',t.n3);s('dec-n4',t.n4);
+        s('dec-s1',t.s1);s('dec-s2',t.s2);s('dec-s3',t.s3);s('dec-s4',t.s4);
+    }
+    const sel=document.querySelector('.lang-select'); if(sel) sel.addEventListener('change',apply);
+    apply();
+})();
+</script>
+
 <section id="artdevivre">
     <div class="mag-head">
         <span class="section-tag" id="mag-tag">Art de vivre en Luberon</span>

@@ -1043,6 +1043,72 @@
     </div>
 </section>
 
+<!-- ══ ART DE VIVRE ═══════════════════════════════════════════════ -->
+<style>
+    #artdevivre .mag-head{ text-align:center; max-width:1180px; margin:0 auto 56px; }
+    #artdevivre .mag-grid{ display:grid; grid-template-columns:repeat(3,1fr); gap:30px; max-width:1180px; margin:0 auto; }
+    #artdevivre .mag-card{ display:block; color:inherit; text-decoration:none; }
+    #artdevivre .mag-card .ph{ aspect-ratio:3/2; overflow:hidden; margin-bottom:18px; }
+    #artdevivre .mag-card img{ width:100%; height:100%; object-fit:cover; transition:transform .8s ease; }
+    #artdevivre .mag-card:hover img{ transform:scale(1.04); }
+    #artdevivre .mag-card .section-tag{ margin-bottom:6px; }
+    #artdevivre .mag-card h3{ font-size:1.35rem; margin:6px 0 8px; }
+    #artdevivre .mag-card p{ color:var(--mid); font-size:.92rem; line-height:1.7; }
+    @media(max-width:760px){ #artdevivre .mag-grid{ grid-template-columns:1fr; gap:34px; } }
+</style>
+<section id="artdevivre">
+    <div class="mag-head">
+        <span class="section-tag" id="mag-tag">Art de vivre en Luberon</span>
+        <h2 class="section-title" id="mag-title">Au-delà de la maison</h2>
+    </div>
+    <div class="mag-grid">
+        <a class="mag-card" href="recommandations.html">
+            <div class="ph"><img src="photos/6d4197b3-de66-42b3-b778-765d5e4de2be.JPG" alt="Domaines et tables"></div>
+            <span class="section-tag" id="mag-c1tag">Nos adresses</span>
+            <h3 id="mag-c1title">Domaines &amp; tables</h3>
+            <p id="mag-c1desc">Nos coups de cœur autour de Goult : vignerons, restaurants et marchés provençaux.</p>
+        </a>
+        <a class="mag-card" href="recommandations.html">
+            <div class="ph"><img src="photos/DJI_0348-HDR-Modifier.jpg" alt="Villages du Luberon"></div>
+            <span class="section-tag" id="mag-c2tag">À découvrir</span>
+            <h3 id="mag-c2title">Les plus beaux villages</h3>
+            <p id="mag-c2desc">Roussillon, Gordes, Ménerbes, Bonnieux… à quelques minutes de la maison.</p>
+        </a>
+        <a class="mag-card" href="actualites.html">
+            <div class="ph"><img src="photos/piscine-juin2026-4.jpg" alt="La vie au Mazet"></div>
+            <span class="section-tag" id="mag-c3tag">Actualités</span>
+            <h3 id="mag-c3title">La vie au Mazet</h3>
+            <p id="mag-c3desc">Les nouveautés, la saison et nos petites attentions pour votre séjour.</p>
+        </a>
+    </div>
+</section>
+<script>
+(function(){
+    const T={
+        fr:{tag:'Art de vivre en Luberon',title:'Au-delà de la maison',c1t:'Nos adresses',c1h:'Domaines & tables',c1d:'Nos coups de cœur autour de Goult : vignerons, restaurants et marchés provençaux.',c2t:'À découvrir',c2h:'Les plus beaux villages',c2d:'Roussillon, Gordes, Ménerbes, Bonnieux… à quelques minutes de la maison.',c3t:'Actualités',c3h:'La vie au Mazet',c3d:'Les nouveautés, la saison et nos petites attentions pour votre séjour.'},
+        en:{tag:'Provençal art of living',title:'Beyond the house',c1t:'Our addresses',c1h:'Estates & tables',c1d:'Our favourites around Goult: winemakers, restaurants and Provençal markets.',c2t:'To discover',c2h:'The finest villages',c2d:'Roussillon, Gordes, Ménerbes, Bonnieux… minutes from the house.',c3t:'News',c3h:'Life at the Mazet',c3d:'Updates, the season and our little touches for your stay.'},
+        es:{tag:'Arte de vivir en el Luberon',title:'Más allá de la casa',c1t:'Nuestras direcciones',c1h:'Bodegas y mesas',c1d:'Nuestros favoritos cerca de Goult: bodegas, restaurantes y mercados provenzales.',c2t:'Para descubrir',c2h:'Los pueblos más bellos',c2d:'Roussillon, Gordes, Ménerbes, Bonnieux… a minutos de la casa.',c3t:'Novedades',c3h:'La vida en el Mazet',c3d:'Novedades, la temporada y nuestros detalles para tu estancia.'},
+        de:{tag:'Lebensart im Luberon',title:'Jenseits des Hauses',c1t:'Unsere Adressen',c1h:'Weingüter & Tische',c1d:'Unsere Favoriten rund um Goult: Winzer, Restaurants und provenzalische Märkte.',c2t:'Zu entdecken',c2h:'Die schönsten Dörfer',c2d:'Roussillon, Gordes, Ménerbes, Bonnieux… nur Minuten entfernt.',c3t:'Aktuelles',c3h:'Das Leben im Mazet',c3d:'Neuigkeiten, die Saison und unsere kleinen Aufmerksamkeiten.'},
+        nl:{tag:'Levenskunst in de Luberon',title:'Meer dan het huis',c1t:'Onze adressen',c1h:'Domeinen & tafels',c1d:'Onze favorieten rond Goult: wijnmakers, restaurants en Provençaalse markten.',c2t:'Te ontdekken',c2h:'De mooiste dorpen',c2d:'Roussillon, Gordes, Ménerbes, Bonnieux… op enkele minuten.',c3t:'Nieuws',c3h:'Het leven in het Mazet',c3d:'Nieuwtjes, het seizoen en onze kleine attenties.'},
+        it:{tag:'Arte di vivere nel Luberon',title:'Oltre la casa',c1t:'I nostri indirizzi',c1h:'Cantine & tavole',c1d:'I nostri preferiti intorno a Goult: vignaioli, ristoranti e mercati provenzali.',c2t:'Da scoprire',c2h:'I borghi più belli',c2d:'Roussillon, Gordes, Ménerbes, Bonnieux… a pochi minuti.',c3t:'Novità',c3h:'La vita al Mazet',c3d:'Novità, la stagione e le nostre piccole attenzioni.'},
+        ja:{tag:'リュベロンの暮らし',title:'家の先にある体験',c1t:'おすすめ',c1h:'ワイナリーと食卓',c1d:'ゴール周辺のお気に入り：ワイン生産者、レストラン、プロヴァンスの市場。',c2t:'発見',c2h:'最も美しい村々',c2d:'ルシヨン、ゴルド、メネルブ、ボニュー…車で数分。',c3t:'お知らせ',c3h:'マゼでの暮らし',c3d:'最新情報、季節、滞在のためのおもてなし。'},
+        pt:{tag:'Arte de viver no Luberon',title:'Para além da casa',c1t:'Os nossos endereços',c1h:'Quintas & mesas',c1d:'Os nossos favoritos à volta de Goult: produtores, restaurantes e mercados provençais.',c2t:'A descobrir',c2h:'As aldeias mais bonitas',c2d:'Roussillon, Gordes, Ménerbes, Bonnieux… a minutos da casa.',c3t:'Novidades',c3h:'A vida no Mazet',c3d:'Novidades, a estação e as nossas pequenas atenções.'}
+    };
+    const el=id=>document.getElementById(id);
+    if(!el('mag-title'))return;
+    function apply(){
+        const lang=(typeof currentLang!=='undefined'&&T[currentLang])?currentLang:'fr'; const t=T[lang];
+        const s=(id,v)=>{const e=el(id);if(e)e.textContent=v;};
+        s('mag-tag',t.tag);s('mag-title',t.title);
+        s('mag-c1tag',t.c1t);s('mag-c1title',t.c1h);s('mag-c1desc',t.c1d);
+        s('mag-c2tag',t.c2t);s('mag-c2title',t.c2h);s('mag-c2desc',t.c2d);
+        s('mag-c3tag',t.c3t);s('mag-c3title',t.c3h);s('mag-c3desc',t.c3d);
+    }
+    const sel=document.querySelector('.lang-select'); if(sel) sel.addEventListener('change',apply);
+    apply();
+})();
+</script>
+
 <!-- ══ RULES ══════════════════════════════════════════════════════ -->
 <section id="reglement" style="padding-top:0">
     <div class="rules-inner">

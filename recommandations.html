@@ -367,6 +367,8 @@
 <!-- ══ CONTENU PRINCIPAL ════════════════════════════════════════ -->
 <main>
 
+    <div class="rec-note"><span id="rec-note-txt">Les pastilles dorées indiquent la gamme de prix (de € à €€€€). Chaque adresse est cliquable et s'ouvre dans Google Maps.</span></div>
+
     <!-- ── RESTAURANTS ──────────────────────────────────────────── -->
     <div class="rec-section">
         <div class="rec-section-header cat-banner" style="background-image:url('https://images.unsplash.com/photo-1633618327543-9fd337e8a97e?w=1400&q=70&auto=format&fit=crop')">
@@ -854,6 +856,12 @@ input, textarea, select, .lang-select, .card, .reco-card, .article-card, img.rou
 .rec-section-header.cat-banner .rec-section-icon{ display:none; }
 .rec-section-header.cat-banner h2{ color:#fff !important; text-transform:uppercase; font-weight:300; letter-spacing:2.5px; font-size:1.7rem; }
 @media(max-width:600px){ .rec-section-header.cat-banner{ min-height:160px; padding:20px 22px; } .rec-section-header.cat-banner h2{ font-size:1.35rem; } }
+/* ── Légende + adresses cliquables (Google Maps) ───────────── */
+.rec-note{ max-width:780px; margin:0 auto 6px; text-align:center; color:var(--mid); font-size:.82rem; letter-spacing:.3px; line-height:1.6; padding:0 16px; }
+.card.is-linked, .simple-item.is-linked{ cursor:pointer; transition:transform .15s ease, box-shadow .15s ease; }
+.card.is-linked:hover{ transform:translateY(-3px); box-shadow:0 10px 26px rgba(38,34,27,.10); }
+.simple-item.is-linked:hover{ transform:translateY(-2px); }
+.card.is-linked .card-name::after, .simple-item.is-linked .simple-name::after{ content:' ↗'; color:var(--gold); font-size:.82em; opacity:.6; }
 </style>
 <script>
 (function(){
@@ -862,6 +870,33 @@ input, textarea, select, .lang-select, .card, .reco-card, .article-card, img.rou
   nb.querySelectorAll('.nav-links a').forEach(function(a){
     a.addEventListener('click',function(){ nb.classList.remove('menu-open'); });
   });
+})();
+</script>
+<script>
+(function(){
+  // Rendre chaque adresse cliquable -> Google Maps (recherche nom + commune)
+  document.querySelectorAll('.card, .simple-item').forEach(function(el){
+    var n=el.querySelector('.card-name, .simple-name'); var l=el.querySelector('.card-location, .simple-location');
+    if(!n) return;
+    var q=encodeURIComponent((n.textContent.trim()+' '+(l?l.textContent.trim():'')+' Luberon').replace(/\s+/g,' '));
+    el.classList.add('is-linked');
+    el.setAttribute('title','Voir sur Google Maps');
+    el.setAttribute('role','link');
+    el.addEventListener('click',function(){ window.open('https://www.google.com/maps/search/?api=1&query='+q,'_blank','noopener'); });
+  });
+  // Légende multilingue
+  var T={
+    fr:"Les pastilles dorées indiquent la gamme de prix (de € à €€€€). Chaque adresse est cliquable et s'ouvre dans Google Maps.",
+    en:"The gold dots show the price range (€ to €€€€). Each address is clickable and opens in Google Maps.",
+    es:"Los puntos dorados indican la gama de precios (de € a €€€€). Cada dirección es clicable y se abre en Google Maps.",
+    de:"Die goldenen Punkte zeigen die Preisklasse (€ bis €€€€). Jede Adresse ist anklickbar und öffnet Google Maps.",
+    nl:"De gouden stippen tonen de prijsklasse (€ tot €€€€). Elk adres is klikbaar en opent in Google Maps.",
+    it:"I pallini dorati indicano la fascia di prezzo (da € a €€€€). Ogni indirizzo è cliccabile e si apre in Google Maps.",
+    ja:"金色のドットは価格帯（€〜€€€€）を表します。各店をクリックするとGoogleマップで開きます。",
+    pt:"Os pontos dourados indicam a faixa de preço (de € a €€€€). Cada endereço é clicável e abre no Google Maps."
+  };
+  function apply(){ var lang=(typeof currentLang!=='undefined'&&T[currentLang])?currentLang:'fr'; var e=document.getElementById('rec-note-txt'); if(e)e.textContent=T[lang]; }
+  var sel=document.querySelector('.lang-select'); if(sel) sel.addEventListener('change',apply); apply();
 })();
 </script>
 

@@ -823,7 +823,8 @@
     <img src="photos/hero-cropped.jpg" alt="Vue aérienne du Mazet des Vaines, Goult, Luberon">
     <div class="hero-overlay">
         <span class="hero-tag" data-i18n="hero.tag">Goult · Luberon · Provence</span>
-        <h1 data-i18n-html="hero.title">Une bergerie<br>au cœur des <em>vignes</em></h1>
+        <h1>Le Mazet<br>des Vaines</h1>
+        <p class="hero-sub" data-i18n-html="hero.subtitle">Une bergerie du XIX<sup>e</sup> siècle au cœur des vignes,<br>entre ciel provençal et pierres dorées.</p>
         <div class="hero-cta">
             <a href="#contact" class="btn" data-i18n="hero.cta1">Demander une disponibilité</a>
             <a href="#galerie" class="btn btn-outline" data-i18n="hero.cta2">Voir les photos</a>
@@ -2107,6 +2108,19 @@ body{ font-family:'Metropolis','Jost',Arial,sans-serif; font-weight:300; letter-
 .avis-quote{ font-style:normal !important; font-size:1.18rem !important; line-height:1.6 !important; color:var(--dark) !important; }
 .avis-author{ text-transform:uppercase; letter-spacing:2px; font-size:.72rem !important; font-weight:400 !important; color:var(--mid) !important; }
 .avis-meta{ color:var(--mid) !important; font-size:.72rem !important; letter-spacing:1px; }
+/* hero : sous-titre raffiné */
+.hero-sub{ color:rgba(255,255,255,.92) !important; font-weight:300 !important; max-width:540px; margin:18px auto 0 !important; font-size:1rem !important; letter-spacing:.4px; line-height:1.75 !important; }
+/* cartes & blocs : angles nets, fonds en filet */
+.gallery-item, .gallery-item img, .pricing-card, .contact-form, .map-embed, .amenity, .rule, .airbnb-link, .dispo-arrow{ border-radius:0 !important; }
+.amenity{ background:transparent !important; border:1px solid rgba(38,34,27,.12) !important; }
+.rule{ background:transparent !important; border:1px solid rgba(38,34,27,.12) !important; }
+.contact-form{ box-shadow:none !important; border:1px solid rgba(38,34,27,.12); }
+/* tarifs (section foncée) : cartes sobres */
+.pricing-card{ background:rgba(255,255,255,.04) !important; border:1px solid rgba(255,255,255,.16) !important; }
+.pricing-card.featured{ background:rgba(255,255,255,.09) !important; }
+.pricing-season, .price-period, .price-note{ letter-spacing:1.5px; }
+/* nav : liens un peu plus aérés */
+.nav-links a{ letter-spacing:2px; }
 </style>
 
 </body>

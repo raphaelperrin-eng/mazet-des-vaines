@@ -369,7 +369,7 @@
 
     <!-- ── RESTAURANTS ──────────────────────────────────────────── -->
     <div class="rec-section">
-        <div class="rec-section-header">
+        <div class="rec-section-header cat-banner" style="background-image:url('https://images.unsplash.com/photo-1633618327543-9fd337e8a97e?w=1400&q=70&auto=format&fit=crop')">
             <span class="rec-section-icon">🍽️</span>
             <h2 data-i18n="section.restaurants">Restaurants</h2>
         </div>
@@ -584,7 +584,7 @@
 
     <!-- ── POUR BOIRE UN VERRE ──────────────────────────────────── -->
     <div class="rec-section">
-        <div class="rec-section-header">
+        <div class="rec-section-header cat-banner" style="background-image:url('https://images.unsplash.com/photo-1760915170446-9c5b0b67b6e2?w=1400&q=70&auto=format&fit=crop')">
             <span class="rec-section-icon">🍷</span>
             <h2 data-i18n="section.drinks">Pour boire un verre</h2>
         </div>
@@ -622,7 +622,7 @@
 
     <!-- ── COURSES ──────────────────────────────────────────────── -->
     <div class="rec-section">
-        <div class="rec-section-header">
+        <div class="rec-section-header cat-banner" style="background-image:url('https://images.unsplash.com/photo-1702506183879-398318b92f6d?w=1400&q=70&auto=format&fit=crop')">
             <span class="rec-section-icon">🛒</span>
             <h2 data-i18n="section.groceries">Courses &amp; boucheries</h2>
         </div>
@@ -648,7 +648,7 @@
 
     <!-- ── DOMAINES VITICOLES ───────────────────────────────────── -->
     <div class="rec-section">
-        <div class="rec-section-header">
+        <div class="rec-section-header cat-banner" style="background-image:url('https://images.unsplash.com/photo-1782039522648-0ac270a4aad2?w=1400&q=70&auto=format&fit=crop')">
             <span class="rec-section-icon">🍾</span>
             <h2 data-i18n="section.wine">Domaines viticoles</h2>
         </div>
@@ -674,7 +674,7 @@
 
     <!-- ── ACTIVITÉS ────────────────────────────────────────────── -->
     <div class="rec-section">
-        <div class="rec-section-header">
+        <div class="rec-section-header cat-banner" style="background-image:url('https://images.unsplash.com/photo-1662486717731-293f2b6ebfa2?w=1400&q=70&auto=format&fit=crop')">
             <span class="rec-section-icon">🎯</span>
             <h2 data-i18n="section.activities">Activités</h2>
         </div>
@@ -847,6 +847,13 @@ input, textarea, select, .lang-select, .card, .reco-card, .article-card, img.rou
   .nav-links li:has(.nav-cta){ border-bottom:0; }
   .lang-select{ margin-top:24px; }
 }
+/* ── Bandeaux image par catégorie ───────────────────────── */
+.rec-section-header.cat-banner{ position:relative; min-height:210px; align-items:flex-end; gap:14px; padding:26px 32px; margin-bottom:42px; border-bottom:0 !important; background-size:cover; background-position:center; overflow:hidden; }
+.rec-section-header.cat-banner::before{ content:''; position:absolute; inset:0; background:linear-gradient(rgba(20,18,14,.10), rgba(20,18,14,.68)); }
+.rec-section-header.cat-banner > *{ position:relative; z-index:1; }
+.rec-section-header.cat-banner .rec-section-icon{ display:none; }
+.rec-section-header.cat-banner h2{ color:#fff !important; text-transform:uppercase; font-weight:300; letter-spacing:2.5px; font-size:1.7rem; }
+@media(max-width:600px){ .rec-section-header.cat-banner{ min-height:160px; padding:20px 22px; } .rec-section-header.cat-banner h2{ font-size:1.35rem; } }
 </style>
 <script>
 (function(){

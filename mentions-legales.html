@@ -10,6 +10,9 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.cdnfonts.com" crossorigin>
+    <link href="https://fonts.cdnfonts.com/css/metropolis-2" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Jost:wght@200;300;400;500&display=swap" rel="stylesheet">
     <style>
         *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
         :root {
@@ -377,6 +380,45 @@
 <a href="https://wa.me/33615951222?text=Bonjour%2C%20je%20vous%20contacte%20au%20sujet%20du%20Mazet%20des%20Vaines" target="_blank" rel="noopener" aria-label="Contactez-nous sur WhatsApp" style="position:fixed;right:20px;bottom:20px;z-index:9999;width:56px;height:56px;border-radius:50%;background:#25D366;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 14px rgba(0,0,0,0.28);transition:transform .2s" onmouseover="this.style.transform='scale(1.08)'" onmouseout="this.style.transform='scale(1)'">
     <svg width="30" height="30" viewBox="0 0 24 24" fill="#fff"><path d="M.057 24l1.687-6.163a11.867 11.867 0 0 1-1.587-5.946C.16 5.335 5.495 0 12.05 0a11.817 11.817 0 0 1 8.413 3.488 11.824 11.824 0 0 1 3.48 8.414c-.003 6.557-5.338 11.892-11.893 11.892a11.9 11.9 0 0 1-5.688-1.448L.057 24zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884a9.86 9.86 0 0 0 1.51 5.26l-.999 3.648 3.738-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.71.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/></svg>
 </a>
+
+<style>
+/* ===== Refonte DA épurée — pages intérieures (Metropolis, capitales fines, palette chaude) ===== */
+:root{ --gold:#AE874C; --terra:#9C5A33; --cream:#FAF7F1; --dark:#26221B; --mid:#8c8475; --stone:#BCB1A0; --light:#ECE3D4; }
+body{ font-family:'Metropolis','Jost',Arial,sans-serif; font-weight:300; letter-spacing:.2px; }
+.nav-logo, .page-hero h1, .section-title, .article-title, .footer-logo, .form-title, h1, h2{ font-family:'Metropolis','Jost',Arial,sans-serif !important; }
+.page-hero h1, .section-title, .article-title, .footer-logo, .form-title{ text-transform:uppercase; font-weight:200; letter-spacing:2.5px; }
+.nav-logo span{ text-transform:uppercase; font-weight:400; letter-spacing:3px; font-size:1rem; }
+.btn, .btn-outline, .btn-submit, .airbnb-link{ border-radius:0 !important; text-transform:uppercase; letter-spacing:2px; font-weight:400; }
+input, textarea, select, .lang-select, .card, .reco-card, .article-card, img.rounded, .map-embed{ border-radius:0 !important; }
+.nav-links a{ letter-spacing:2px; }
+/* ── MENU MOBILE (hamburger) ─────────────────────────────── */
+.nav-toggle{ display:none; background:none; border:0; cursor:pointer; width:36px; height:30px; flex-direction:column; justify-content:center; align-items:flex-end; gap:7px; padding:0; z-index:120; }
+.nav-toggle span{ display:block; height:1.5px; width:26px; background:#fff; transition:transform .3s, opacity .3s; }
+#navbar.menu-open .nav-toggle span:nth-child(1){ transform:translateY(8.5px) rotate(45deg); }
+#navbar.menu-open .nav-toggle span:nth-child(2){ opacity:0; }
+#navbar.menu-open .nav-toggle span:nth-child(3){ transform:translateY(-8.5px) rotate(-45deg); }
+@media(max-width:960px){
+  .nav-toggle{ display:flex; }
+  #navbar{ flex-wrap:nowrap; }
+  .nav-right{ position:fixed; top:0; right:0; height:100vh; width:min(80vw,330px); background:rgba(26,24,20,.98); backdrop-filter:blur(14px); flex-direction:column; align-items:flex-start; justify-content:flex-start; padding:96px 34px 34px; gap:0; transform:translateX(100%); transition:transform .35s ease; box-shadow:-18px 0 60px rgba(0,0,0,.35); }
+  #navbar.menu-open .nav-right{ transform:translateX(0); }
+  .nav-links{ display:flex !important; flex-direction:column; gap:0; width:100%; }
+  .nav-links li{ width:100%; border-bottom:1px solid rgba(255,255,255,.1); }
+  .nav-links a{ display:block; padding:15px 0; font-size:.92rem; letter-spacing:2px; }
+  .nav-links a.nav-cta{ background:var(--gold); color:#fff !important; text-align:center; margin-top:20px; padding:14px 0; }
+  .nav-links li:has(.nav-cta){ border-bottom:0; }
+  .lang-select{ margin-top:24px; }
+}
+</style>
+<script>
+(function(){
+  var nb=document.getElementById('navbar');
+  if(!nb) return;
+  nb.querySelectorAll('.nav-links a').forEach(function(a){
+    a.addEventListener('click',function(){ nb.classList.remove('menu-open'); });
+  });
+})();
+</script>
 
 </body>
 </html>

@@ -8,6 +8,9 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.cdnfonts.com" crossorigin>
+<link href="https://fonts.cdnfonts.com/css/metropolis-2" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Jost:wght@200;300;400;500&display=swap" rel="stylesheet">
 <style>
     :root { --gold:#B8965A; --terra:#A8552A; --cream:#FDFAF5; --dark:#1C1A17; --mid:#5A544A; --stone:#C9C2B4; --light:#F0EAE0; }
     * { box-sizing: border-box; margin: 0; padding: 0; }
@@ -127,5 +130,45 @@
         }).finally(() => { btn.disabled = false; btn.textContent = original; });
     });
 </script>
+
+<style>
+/* ===== Refonte DA épurée — pages intérieures (Metropolis, capitales fines, palette chaude) ===== */
+:root{ --gold:#AE874C; --terra:#9C5A33; --cream:#FAF7F1; --dark:#26221B; --mid:#8c8475; --stone:#BCB1A0; --light:#ECE3D4; }
+body{ font-family:'Metropolis','Jost',Arial,sans-serif; font-weight:300; letter-spacing:.2px; }
+.nav-logo, .page-hero h1, .section-title, .article-title, .footer-logo, .form-title, h1, h2{ font-family:'Metropolis','Jost',Arial,sans-serif !important; }
+.page-hero h1, .section-title, .article-title, .footer-logo, .form-title{ text-transform:uppercase; font-weight:200; letter-spacing:2.5px; }
+.nav-logo span{ text-transform:uppercase; font-weight:400; letter-spacing:3px; font-size:1rem; }
+.btn, .btn-outline, .btn-submit, .airbnb-link{ border-radius:0 !important; text-transform:uppercase; letter-spacing:2px; font-weight:400; }
+input, textarea, select, .lang-select, .card, .reco-card, .article-card, img.rounded, .map-embed{ border-radius:0 !important; }
+.nav-links a{ letter-spacing:2px; }
+/* ── MENU MOBILE (hamburger) ─────────────────────────────── */
+.nav-toggle{ display:none; background:none; border:0; cursor:pointer; width:36px; height:30px; flex-direction:column; justify-content:center; align-items:flex-end; gap:7px; padding:0; z-index:120; }
+.nav-toggle span{ display:block; height:1.5px; width:26px; background:#fff; transition:transform .3s, opacity .3s; }
+#navbar.menu-open .nav-toggle span:nth-child(1){ transform:translateY(8.5px) rotate(45deg); }
+#navbar.menu-open .nav-toggle span:nth-child(2){ opacity:0; }
+#navbar.menu-open .nav-toggle span:nth-child(3){ transform:translateY(-8.5px) rotate(-45deg); }
+@media(max-width:960px){
+  .nav-toggle{ display:flex; }
+  #navbar{ flex-wrap:nowrap; }
+  .nav-right{ position:fixed; top:0; right:0; height:100vh; width:min(80vw,330px); background:rgba(26,24,20,.98); backdrop-filter:blur(14px); flex-direction:column; align-items:flex-start; justify-content:flex-start; padding:96px 34px 34px; gap:0; transform:translateX(100%); transition:transform .35s ease; box-shadow:-18px 0 60px rgba(0,0,0,.35); }
+  #navbar.menu-open .nav-right{ transform:translateX(0); }
+  .nav-links{ display:flex !important; flex-direction:column; gap:0; width:100%; }
+  .nav-links li{ width:100%; border-bottom:1px solid rgba(255,255,255,.1); }
+  .nav-links a{ display:block; padding:15px 0; font-size:.92rem; letter-spacing:2px; }
+  .nav-links a.nav-cta{ background:var(--gold); color:#fff !important; text-align:center; margin-top:20px; padding:14px 0; }
+  .nav-links li:has(.nav-cta){ border-bottom:0; }
+  .lang-select{ margin-top:24px; }
+}
+</style>
+<script>
+(function(){
+  var nb=document.getElementById('navbar');
+  if(!nb) return;
+  nb.querySelectorAll('.nav-links a').forEach(function(a){
+    a.addEventListener('click',function(){ nb.classList.remove('menu-open'); });
+  });
+})();
+</script>
+
 </body>
 </html>

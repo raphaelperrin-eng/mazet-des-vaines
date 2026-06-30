@@ -80,8 +80,11 @@
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://fonts.cdnfonts.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.cdnfonts.com/css/metropolis-2" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Jost:wght@200;300;400;500&display=swap" rel="stylesheet">
 
     <style>
         *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -791,6 +794,7 @@
 <!-- ══ NAVIGATION ════════════════════════════════════════════════ -->
 <nav id="navbar">
     <a href="#" class="nav-logo"><img src="nav-logo.png" alt="" class="nav-logo-mark"><span>Le Mazet des Vaines</span></a>
+    <button class="nav-toggle" aria-label="Menu" onclick="document.getElementById('navbar').classList.toggle('menu-open')"><span></span><span></span><span></span></button>
     <div class="nav-right">
         <ul class="nav-links">
             <li><a href="#logement"    data-i18n="nav.logement">Le logement</a></li>
@@ -818,17 +822,19 @@
 
 <!-- ══ HERO ══════════════════════════════════════════════════════ -->
 <section class="hero" id="hero">
-    <img src="photos/hero-cropped.jpg" alt="Vue aérienne du Mazet des Vaines, Goult, Luberon">
+    <picture>
+        <source srcset="photos/hero-cropped.webp" type="image/webp">
+        <img src="photos/hero-cropped.jpg" alt="Vue aérienne du Mazet des Vaines, Goult, Luberon" width="1600" height="1522" fetchpriority="high">
+    </picture>
     <div class="hero-overlay">
         <span class="hero-tag" data-i18n="hero.tag">Goult · Luberon · Provence</span>
-        <h1>Le Mazet<br>des <em>Vaines</em></h1>
+        <h1>Le Mazet<br>des Vaines</h1>
         <p class="hero-sub" data-i18n-html="hero.subtitle">Une bergerie du XIX<sup>e</sup> siècle au cœur des vignes,<br>entre ciel provençal et pierres dorées.</p>
-        <div>
-            <a href="#contact" class="btn"         data-i18n="hero.cta1">Demander une disponibilité</a>
+        <div class="hero-cta">
+            <a href="#contact" class="btn" data-i18n="hero.cta1">Demander une disponibilité</a>
             <a href="#galerie" class="btn btn-outline" data-i18n="hero.cta2">Voir les photos</a>
         </div>
     </div>
-    <div class="hero-scroll" data-i18n="hero.scroll">Découvrir</div>
 </section>
 
 <!-- ══ STATS BAR ══════════════════════════════════════════════════ -->
@@ -1042,6 +1048,72 @@
     </div>
 </section>
 
+<!-- ══ ART DE VIVRE ═══════════════════════════════════════════════ -->
+<style>
+    #artdevivre .mag-head{ text-align:center; max-width:1180px; margin:0 auto 56px; }
+    #artdevivre .mag-grid{ display:grid; grid-template-columns:repeat(3,1fr); gap:30px; max-width:1180px; margin:0 auto; }
+    #artdevivre .mag-card{ display:block; color:inherit; text-decoration:none; }
+    #artdevivre .mag-card .ph{ aspect-ratio:3/2; overflow:hidden; margin-bottom:18px; }
+    #artdevivre .mag-card img{ width:100%; height:100%; object-fit:cover; transition:transform .8s ease; }
+    #artdevivre .mag-card:hover img{ transform:scale(1.04); }
+    #artdevivre .mag-card .section-tag{ margin-bottom:6px; }
+    #artdevivre .mag-card h3{ font-size:1.35rem; margin:6px 0 8px; }
+    #artdevivre .mag-card p{ color:var(--mid); font-size:.92rem; line-height:1.7; }
+    @media(max-width:760px){ #artdevivre .mag-grid{ grid-template-columns:1fr; gap:34px; } }
+</style>
+<section id="artdevivre">
+    <div class="mag-head">
+        <span class="section-tag" id="mag-tag">Art de vivre en Luberon</span>
+        <h2 class="section-title" id="mag-title">Au-delà de la maison</h2>
+    </div>
+    <div class="mag-grid">
+        <a class="mag-card" href="recommandations.html">
+            <div class="ph"><img src="photos/6d4197b3-de66-42b3-b778-765d5e4de2be.JPG" alt="Domaines et tables"></div>
+            <span class="section-tag" id="mag-c1tag">Nos adresses</span>
+            <h3 id="mag-c1title">Domaines &amp; tables</h3>
+            <p id="mag-c1desc">Nos coups de cœur autour de Goult : vignerons, restaurants et marchés provençaux.</p>
+        </a>
+        <a class="mag-card" href="recommandations.html">
+            <div class="ph"><img src="photos/DJI_0348-HDR-Modifier.jpg" alt="Villages du Luberon"></div>
+            <span class="section-tag" id="mag-c2tag">À découvrir</span>
+            <h3 id="mag-c2title">Les plus beaux villages</h3>
+            <p id="mag-c2desc">Roussillon, Gordes, Ménerbes, Bonnieux… à quelques minutes de la maison.</p>
+        </a>
+        <a class="mag-card" href="actualites.html">
+            <div class="ph"><img src="photos/piscine-juin2026-4.jpg" alt="La vie au Mazet"></div>
+            <span class="section-tag" id="mag-c3tag">Actualités</span>
+            <h3 id="mag-c3title">La vie au Mazet</h3>
+            <p id="mag-c3desc">Les nouveautés, la saison et nos petites attentions pour votre séjour.</p>
+        </a>
+    </div>
+</section>
+<script>
+(function(){
+    const T={
+        fr:{tag:'Art de vivre en Luberon',title:'Au-delà de la maison',c1t:'Nos adresses',c1h:'Domaines & tables',c1d:'Nos coups de cœur autour de Goult : vignerons, restaurants et marchés provençaux.',c2t:'À découvrir',c2h:'Les plus beaux villages',c2d:'Roussillon, Gordes, Ménerbes, Bonnieux… à quelques minutes de la maison.',c3t:'Actualités',c3h:'La vie au Mazet',c3d:'Les nouveautés, la saison et nos petites attentions pour votre séjour.'},
+        en:{tag:'Provençal art of living',title:'Beyond the house',c1t:'Our addresses',c1h:'Estates & tables',c1d:'Our favourites around Goult: winemakers, restaurants and Provençal markets.',c2t:'To discover',c2h:'The finest villages',c2d:'Roussillon, Gordes, Ménerbes, Bonnieux… minutes from the house.',c3t:'News',c3h:'Life at the Mazet',c3d:'Updates, the season and our little touches for your stay.'},
+        es:{tag:'Arte de vivir en el Luberon',title:'Más allá de la casa',c1t:'Nuestras direcciones',c1h:'Bodegas y mesas',c1d:'Nuestros favoritos cerca de Goult: bodegas, restaurantes y mercados provenzales.',c2t:'Para descubrir',c2h:'Los pueblos más bellos',c2d:'Roussillon, Gordes, Ménerbes, Bonnieux… a minutos de la casa.',c3t:'Novedades',c3h:'La vida en el Mazet',c3d:'Novedades, la temporada y nuestros detalles para tu estancia.'},
+        de:{tag:'Lebensart im Luberon',title:'Jenseits des Hauses',c1t:'Unsere Adressen',c1h:'Weingüter & Tische',c1d:'Unsere Favoriten rund um Goult: Winzer, Restaurants und provenzalische Märkte.',c2t:'Zu entdecken',c2h:'Die schönsten Dörfer',c2d:'Roussillon, Gordes, Ménerbes, Bonnieux… nur Minuten entfernt.',c3t:'Aktuelles',c3h:'Das Leben im Mazet',c3d:'Neuigkeiten, die Saison und unsere kleinen Aufmerksamkeiten.'},
+        nl:{tag:'Levenskunst in de Luberon',title:'Meer dan het huis',c1t:'Onze adressen',c1h:'Domeinen & tafels',c1d:'Onze favorieten rond Goult: wijnmakers, restaurants en Provençaalse markten.',c2t:'Te ontdekken',c2h:'De mooiste dorpen',c2d:'Roussillon, Gordes, Ménerbes, Bonnieux… op enkele minuten.',c3t:'Nieuws',c3h:'Het leven in het Mazet',c3d:'Nieuwtjes, het seizoen en onze kleine attenties.'},
+        it:{tag:'Arte di vivere nel Luberon',title:'Oltre la casa',c1t:'I nostri indirizzi',c1h:'Cantine & tavole',c1d:'I nostri preferiti intorno a Goult: vignaioli, ristoranti e mercati provenzali.',c2t:'Da scoprire',c2h:'I borghi più belli',c2d:'Roussillon, Gordes, Ménerbes, Bonnieux… a pochi minuti.',c3t:'Novità',c3h:'La vita al Mazet',c3d:'Novità, la stagione e le nostre piccole attenzioni.'},
+        ja:{tag:'リュベロンの暮らし',title:'家の先にある体験',c1t:'おすすめ',c1h:'ワイナリーと食卓',c1d:'ゴール周辺のお気に入り：ワイン生産者、レストラン、プロヴァンスの市場。',c2t:'発見',c2h:'最も美しい村々',c2d:'ルシヨン、ゴルド、メネルブ、ボニュー…車で数分。',c3t:'お知らせ',c3h:'マゼでの暮らし',c3d:'最新情報、季節、滞在のためのおもてなし。'},
+        pt:{tag:'Arte de viver no Luberon',title:'Para além da casa',c1t:'Os nossos endereços',c1h:'Quintas & mesas',c1d:'Os nossos favoritos à volta de Goult: produtores, restaurantes e mercados provençais.',c2t:'A descobrir',c2h:'As aldeias mais bonitas',c2d:'Roussillon, Gordes, Ménerbes, Bonnieux… a minutos da casa.',c3t:'Novidades',c3h:'A vida no Mazet',c3d:'Novidades, a estação e as nossas pequenas atenções.'}
+    };
+    const el=id=>document.getElementById(id);
+    if(!el('mag-title'))return;
+    function apply(){
+        const lang=(typeof currentLang!=='undefined'&&T[currentLang])?currentLang:'fr'; const t=T[lang];
+        const s=(id,v)=>{const e=el(id);if(e)e.textContent=v;};
+        s('mag-tag',t.tag);s('mag-title',t.title);
+        s('mag-c1tag',t.c1t);s('mag-c1title',t.c1h);s('mag-c1desc',t.c1d);
+        s('mag-c2tag',t.c2t);s('mag-c2title',t.c2h);s('mag-c2desc',t.c2d);
+        s('mag-c3tag',t.c3t);s('mag-c3title',t.c3h);s('mag-c3desc',t.c3d);
+    }
+    const sel=document.querySelector('.lang-select'); if(sel) sel.addEventListener('change',apply);
+    apply();
+})();
+</script>
+
 <!-- ══ RULES ══════════════════════════════════════════════════════ -->
 <section id="reglement" style="padding-top:0">
     <div class="rules-inner">
@@ -1244,6 +1316,7 @@
             'nav.recommandations': 'Recommandations', 'nav.actualites': 'Actualités',
             'hero.tag': 'Goult\u00a0·\u00a0Luberon\u00a0·\u00a0Provence',
             'hero.subtitle': 'Une bergerie du XIX<sup>e</sup> siècle au cœur des vignes,<br>entre ciel provençal et pierres dorées.',
+            'hero.title': 'Une bergerie<br>au cœur des <em>vignes</em>',
             'hero.cta1': 'Demander une disponibilité', 'hero.cta2': 'Voir les photos', 'hero.scroll': 'Découvrir',
             'stat.chambres': 'Chambres', 'stat.voyageurs': 'Voyageurs max.', 'stat.piscine': 'Piscine privée',
             'stat.vue': 'Vue vignes & Ventoux', 'stat.distance': 'De Goult & Roussillon',
@@ -1315,6 +1388,7 @@
             'nav.recommandations': 'Recommendations', 'nav.actualites': 'News',
             'hero.tag': 'Goult\u00a0·\u00a0Luberon\u00a0·\u00a0Provence',
             'hero.subtitle': 'A 19th-century sheepfold in the heart of the vineyards,<br>between Provençal skies and golden stone.',
+            'hero.title': 'A stone farmhouse<br>among the <em>vines</em>',
             'hero.cta1': 'Check availability', 'hero.cta2': 'View photos', 'hero.scroll': 'Discover',
             'stat.chambres': 'Bedrooms', 'stat.voyageurs': 'Guests max.', 'stat.piscine': 'Private pool',
             'stat.vue': 'Vineyard & Ventoux view', 'stat.distance': 'From Goult & Roussillon',
@@ -1385,6 +1459,7 @@
             'nav.tarifs': 'Tarifas', 'nav.localisation': 'Ubicación', 'nav.reserver': 'Reservar',
             'hero.tag': 'Goult\u00a0·\u00a0Luberon\u00a0·\u00a0Provenza',
             'hero.subtitle': 'Una masía del siglo XIX en el corazón de los viñedos,<br>entre el cielo provenzal y la piedra dorada.',
+            'hero.title': 'Una casa de piedra<br>entre las <em>viñas</em>',
             'hero.cta1': 'Consultar disponibilidad', 'hero.cta2': 'Ver fotos', 'hero.scroll': 'Descubrir',
             'stat.chambres': 'Habitaciones', 'stat.voyageurs': 'Huéspedes máx.', 'stat.piscine': 'Piscina privada',
             'stat.vue': 'Vista viñedos & Ventoux', 'stat.distance': 'De Goult & Roussillon',
@@ -1455,6 +1530,7 @@
             'nav.tarifs': 'Preise', 'nav.localisation': 'Lage', 'nav.reserver': 'Buchen',
             'hero.tag': 'Goult\u00a0·\u00a0Luberon\u00a0·\u00a0Provence',
             'hero.subtitle': 'Ein Schäferhaus aus dem 19. Jahrhundert inmitten der Weinberge,<br>zwischen provenzalischem Himmel und goldenem Stein.',
+            'hero.title': 'Ein Steinhaus<br>inmitten der <em>Reben</em>',
             'hero.cta1': 'Verfügbarkeit prüfen', 'hero.cta2': 'Fotos ansehen', 'hero.scroll': 'Entdecken',
             'stat.chambres': 'Schlafzimmer', 'stat.voyageurs': 'Gäste max.', 'stat.piscine': 'Privater Pool',
             'stat.vue': 'Blick auf Weinberge & Ventoux', 'stat.distance': 'Von Goult & Roussillon',
@@ -1525,6 +1601,7 @@
             'nav.tarifs': 'Tarieven', 'nav.localisation': 'Locatie', 'nav.reserver': 'Boeken',
             'hero.tag': 'Goult\u00a0·\u00a0Luberon\u00a0·\u00a0Provence',
             'hero.subtitle': 'Een 19e-eeuwse schaapskooi in het hart van de wijngaarden,<br>tussen de Provençaalse hemel en gouden steen.',
+            'hero.title': 'Een stenen huis<br>tussen de <em>wijngaarden</em>',
             'hero.cta1': 'Beschikbaarheid controleren', 'hero.cta2': "Foto's bekijken", 'hero.scroll': 'Ontdekken',
             'stat.chambres': 'Slaapkamers', 'stat.voyageurs': 'Gasten max.', 'stat.piscine': 'Privézwembad',
             'stat.vue': 'Uitzicht op wijngaarden & Ventoux', 'stat.distance': 'Van Goult & Roussillon',
@@ -1595,6 +1672,7 @@
             'nav.tarifs': 'Tariffe', 'nav.localisation': 'Posizione', 'nav.reserver': 'Prenotare',
             'hero.tag': 'Goult\u00a0·\u00a0Luberon\u00a0·\u00a0Provenza',
             'hero.subtitle': 'Un casolare del XIX secolo nel cuore dei vigneti,<br>tra il cielo provenzale e la pietra dorata.',
+            'hero.title': 'Una casa in pietra<br>tra le <em>vigne</em>',
             'hero.cta1': 'Verificare disponibilità', 'hero.cta2': 'Vedere le foto', 'hero.scroll': 'Scoprire',
             'stat.chambres': 'Camere', 'stat.voyageurs': 'Ospiti max.', 'stat.piscine': 'Piscina privata',
             'stat.vue': 'Vista vigneti & Ventoux', 'stat.distance': 'Da Goult & Roussillon',
@@ -1665,6 +1743,7 @@
             'nav.tarifs': '料金', 'nav.localisation': 'アクセス', 'nav.reserver': '予約',
             'hero.tag': 'ゴール\u00a0·\u00a0ルベロン\u00a0·\u00a0プロヴァンス',
             'hero.subtitle': 'ブドウ畑の中心に佇む19世紀の石造りの家。<br>プロヴァンスの空と黄金色の石が織りなす世界へ。',
+            'hero.title': 'ぶどう畑に佇む<br><em>石造りの家</em>',
             'hero.cta1': '空き状況を確認する', 'hero.cta2': '写真を見る', 'hero.scroll': '詳しく見る',
             'stat.chambres': 'ベッドルーム', 'stat.voyageurs': '最大宿泊人数', 'stat.piscine': 'プライベートプール',
             'stat.vue': 'ブドウ畑とヴァントゥーの眺め', 'stat.distance': 'ゴールとルッシヨンから',
@@ -1735,6 +1814,7 @@
             'nav.tarifs': 'Preços', 'nav.localisation': 'Localização', 'nav.reserver': 'Reservar',
             'hero.tag': 'Goult\u00a0·\u00a0Luberon\u00a0·\u00a0Provença',
             'hero.subtitle': 'Uma quinta do século XIX no coração dos vinhedos,<br>entre o céu provençal e a pedra dourada.',
+            'hero.title': 'Uma casa de pedra<br>entre as <em>vinhas</em>',
             'hero.cta1': 'Verificar disponibilidade', 'hero.cta2': 'Ver as fotos', 'hero.scroll': 'Descobrir',
             'stat.chambres': 'Quartos', 'stat.voyageurs': 'Hóspedes máx.', 'stat.piscine': 'Piscina privativa',
             'stat.vue': 'Vista vinhedos & Ventoux', 'stat.distance': 'De Goult & Roussillon',
@@ -2056,6 +2136,99 @@
 <a href="https://wa.me/33615951222?text=Bonjour%2C%20je%20vous%20contacte%20au%20sujet%20du%20Mazet%20des%20Vaines" target="_blank" rel="noopener" aria-label="Contactez-nous sur WhatsApp" style="position:fixed;right:20px;bottom:20px;z-index:9999;width:56px;height:56px;border-radius:50%;background:#25D366;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 14px rgba(0,0,0,0.28);transition:transform .2s" onmouseover="this.style.transform='scale(1.08)'" onmouseout="this.style.transform='scale(1)'">
     <svg width="30" height="30" viewBox="0 0 24 24" fill="#fff"><path d="M.057 24l1.687-6.163a11.867 11.867 0 0 1-1.587-5.946C.16 5.335 5.495 0 12.05 0a11.817 11.817 0 0 1 8.413 3.488 11.824 11.824 0 0 1 3.48 8.414c-.003 6.557-5.338 11.892-11.893 11.892a11.9 11.9 0 0 1-5.688-1.448L.057 24zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884a9.86 9.86 0 0 0 1.51 5.26l-.999 3.648 3.738-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.71.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/></svg>
 </a>
+
+<style>
+/* ===== Refonte DA épurée — Metropolis, capitales fines, palette chaude ===== */
+:root{
+    --gold:#AE874C; --terra:#9C5A33; --cream:#FAF7F1; --dark:#26221B;
+    --mid:#8c8475; --stone:#BCB1A0; --light:#ECE3D4;
+}
+body{ font-family:'Metropolis','Jost',Arial,sans-serif; font-weight:300; letter-spacing:.2px; }
+.nav-logo, .hero h1, .stat-number, .section-title, .price-currency, .price-amount, .form-title, .footer-logo, .dispo-month-title{
+    font-family:'Metropolis','Jost',Arial,sans-serif !important;
+}
+.section-title, .hero h1, .footer-logo, .form-title{
+    text-transform:uppercase; font-weight:200; letter-spacing:2.5px;
+}
+.hero h1{ letter-spacing:3.5px; }
+.hero h1 em{ font-style:normal; font-weight:300; }
+.nav-logo span{ text-transform:uppercase; font-weight:400; letter-spacing:3px; font-size:1rem; }
+.section-tag{ color:var(--gold); }
+.btn, .btn-outline, .btn-submit{ border-radius:0; text-transform:uppercase; letter-spacing:2.5px; font-weight:400; }
+.hero-overlay{
+    background:radial-gradient(ellipse 60% 55% at 50% 48%, rgba(18,16,13,.55), rgba(18,16,13,.28) 70%, rgba(18,16,13,.32) 100%), linear-gradient(180deg, rgba(18,16,13,.3), rgba(18,16,13,.18) 45%, rgba(18,16,13,.55)) !important;
+    text-shadow:0 2px 22px rgba(0,0,0,.5);
+}
+/* tailles des titres en capitales + angles nets + air */
+.hero h1{ font-size:clamp(2.1rem,5vw,3.8rem) !important; line-height:1.2; }
+.section-title{ font-size:clamp(1.6rem,3vw,2.3rem) !important; }
+.avis-card, .avis-card img, input, textarea, select, .lang-select{ border-radius:0 !important; }
+@media(min-width:760px){ section{ padding:112px 48px; } }
+/* hero PLEIN CADRE : photo de bord à bord, sans bande claire en haut */
+.hero{ padding:0 !important; }
+.hero picture{ display:block; position:absolute; inset:0; width:100%; height:100%; }
+.hero picture img{ width:100%; height:100%; object-fit:cover; }
+/* hero : boutons en filet blanc, espacement */
+.hero-cta{ display:flex; gap:16px; justify-content:center; flex-wrap:wrap; margin-top:36px; }
+.hero .btn{ background:transparent !important; color:#fff !important; border:1px solid rgba(255,255,255,.7) !important; padding:15px 38px; }
+.hero .btn:hover{ background:#fff !important; color:var(--dark) !important; }
+.hero .hero-tag{ color:#fff; opacity:.92; }
+/* bande de stats : fond clair + filets (style maquette) */
+.stats-bar{ background:var(--cream) !important; border-top:1px solid rgba(38,34,27,.14); border-bottom:1px solid rgba(38,34,27,.14); }
+.stat-number{ color:var(--dark) !important; font-weight:200 !important; }
+.stat-label{ color:var(--mid) !important; }
+/* avis : citations sans carte (style maquette) */
+#avis{ background:var(--light) !important; }
+#avis .avis-card{ background:transparent !important; border:0 !important; padding:0 8px !important; text-align:center; }
+.avis-quote{ font-style:normal !important; font-size:1.18rem !important; line-height:1.6 !important; color:var(--dark) !important; }
+.avis-author{ text-transform:uppercase; letter-spacing:2px; font-size:.72rem !important; font-weight:400 !important; color:var(--mid) !important; }
+.avis-meta{ color:var(--mid) !important; font-size:.72rem !important; letter-spacing:1px; }
+/* hero : sous-titre raffiné */
+.hero-sub{ color:rgba(255,255,255,.92) !important; font-weight:300 !important; max-width:540px; margin:18px auto 0 !important; font-size:1rem !important; letter-spacing:.4px; line-height:1.75 !important; }
+/* cartes & blocs : angles nets, fonds en filet */
+.gallery-item, .gallery-item img, .pricing-card, .contact-form, .map-embed, .amenity, .rule, .airbnb-link, .dispo-arrow{ border-radius:0 !important; }
+.amenity{ background:transparent !important; border:1px solid rgba(38,34,27,.12) !important; }
+.rule{ background:transparent !important; border:1px solid rgba(38,34,27,.12) !important; }
+.contact-form{ box-shadow:none !important; border:1px solid rgba(38,34,27,.12); }
+/* tarifs (section foncée) : cartes sobres */
+.pricing-card{ background:rgba(255,255,255,.04) !important; border:1px solid rgba(255,255,255,.16) !important; }
+.pricing-card.featured{ background:rgba(255,255,255,.09) !important; }
+.pricing-season, .price-period, .price-note{ letter-spacing:1.5px; }
+/* nav : liens un peu plus aérés */
+.nav-links a{ letter-spacing:2px; }
+/* bouton filet : sombre sur fond clair, blanc sur fond foncé */
+.btn-outline{ border:1px solid rgba(38,34,27,.4) !important; color:var(--dark) !important; }
+.btn-outline:hover{ background:var(--dark) !important; color:#fff !important; }
+.hero .btn-outline, #tarifs .btn-outline, footer .btn-outline{ border-color:rgba(255,255,255,.7) !important; color:#fff !important; }
+.hero .btn-outline:hover{ background:#fff !important; color:var(--dark) !important; }
+/* ── MENU MOBILE (hamburger) ─────────────────────────────── */
+.nav-toggle{ display:none; background:none; border:0; cursor:pointer; width:36px; height:30px; flex-direction:column; justify-content:center; align-items:flex-end; gap:7px; padding:0; z-index:120; }
+.nav-toggle span{ display:block; height:1.5px; width:26px; background:#fff; transition:transform .3s, opacity .3s; }
+#navbar.menu-open .nav-toggle span:nth-child(1){ transform:translateY(8.5px) rotate(45deg); }
+#navbar.menu-open .nav-toggle span:nth-child(2){ opacity:0; }
+#navbar.menu-open .nav-toggle span:nth-child(3){ transform:translateY(-8.5px) rotate(-45deg); }
+@media(max-width:960px){
+  .nav-toggle{ display:flex; }
+  #navbar{ flex-wrap:nowrap; }
+  .nav-right{ position:fixed; top:0; right:0; height:100vh; width:min(80vw,330px); background:rgba(26,24,20,.98); backdrop-filter:blur(14px); flex-direction:column; align-items:flex-start; justify-content:flex-start; padding:96px 34px 34px; gap:0; transform:translateX(100%); transition:transform .35s ease; box-shadow:-18px 0 60px rgba(0,0,0,.35); }
+  #navbar.menu-open .nav-right{ transform:translateX(0); }
+  .nav-links{ display:flex !important; flex-direction:column; gap:0; width:100%; }
+  .nav-links li{ width:100%; border-bottom:1px solid rgba(255,255,255,.1); }
+  .nav-links a{ display:block; padding:15px 0; font-size:.92rem; letter-spacing:2px; }
+  .nav-links a.nav-cta{ background:var(--gold); color:#fff !important; text-align:center; margin-top:20px; padding:14px 0; }
+  .nav-links li:has(.nav-cta){ border-bottom:0; }
+  .lang-select{ margin-top:24px; }
+}
+</style>
+<script>
+(function(){
+  var nb=document.getElementById('navbar');
+  if(!nb) return;
+  nb.querySelectorAll('.nav-links a').forEach(function(a){
+    a.addEventListener('click',function(){ nb.classList.remove('menu-open'); });
+  });
+})();
+</script>
 
 </body>
 </html>
